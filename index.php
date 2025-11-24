@@ -27,7 +27,7 @@
                 <h1>Bienvenue dans Dungeon Xplorer</h1>
                 <h2>Choisissez votre aventure</h2>
                 <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
-                <a href="chapters.php" class="btn">Voir les chapitres</a>
+                <a href="pages/chapter/chapter_view.php" class="btn">Voir les chapitres</a>
             </div>
         </section>
     </main>

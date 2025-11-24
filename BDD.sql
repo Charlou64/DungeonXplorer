@@ -66,6 +66,7 @@ CREATE TABLE Hero (
     spell_list TEXT,
     xp INT NOT NULL,
     current_level INT DEFAULT 1,
+    compte_id INT,
     
     FOREIGN KEY (class_id) REFERENCES Class(id),
     FOREIGN KEY (armor_item_id) REFERENCES Items(id),
@@ -148,10 +149,18 @@ CREATE TABLE Hero_Progress (
 );
 
 -- Création de la table Compte (Comptes utilisateurs)
-create table compte (
+create table Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+alter table Hero
+add constraint fk_compte FOREIGN KEY (compte_id) REFERENCES Users(id);
+
+
+/*SELECT CONCAT('DROP TABLE `', table_name, '`;')
+FROM information_schema.tables
+WHERE table_schema = 'dungeonXplorer';*/

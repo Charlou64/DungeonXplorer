@@ -22,6 +22,7 @@ require_once 'pages/connexion.php';
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="chapters.php">Chapitres</a></li>
                 <li><a href="monsters.php">Monstres</a></li>
+                <li><a href="pages/creationperso.php">Creation de Personnage</a></li>
             </ul>
         </nav>
     </header>

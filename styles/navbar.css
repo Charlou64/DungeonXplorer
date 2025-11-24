@@ -1,0 +1,13 @@
+/* Ajouter du padding à gauche et à droite */
+.navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+    border: 1px solid #000;  /* Contour noir léger */
+    border-radius: 5px;  /* Coins légèrement arrondis */
+}
+
+/* Optionnel : ajuster la largeur maximale de la navbar */
+.navbar-container {
+    max-width: 1200px; /* Largeur maximale, tu peux ajuster */
+    margin: 0 auto; /* Centrer la navbar */
+}

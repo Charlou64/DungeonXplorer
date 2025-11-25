@@ -31,6 +31,8 @@ require_once 'pages/connexion.php';
         <a href="chapters.php" class="btn">Voir les chapitres</a>
     </main>
     <footer>
-        <p>&copy; 2024 Dungeon Xplorer. Tous droits réservés.</p>
+        <p>&copy; 2025 Dungeon Xplorer. Tous droits réservés.
+            Les neuilles inc. &trade;
+        </p>
     </footer>
 </body>

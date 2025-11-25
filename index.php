@@ -21,15 +21,13 @@
     ?>
 
     <!-- Main Content (Hero Section) -->
-    <main>
-        <section class="hero-section">
-            <div class="hero-text">
-                <h1>Bienvenue dans Dungeon Xplorer</h1>
-                <h2>Choisissez votre aventure</h2>
-                <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
-                <a href="pages/chapter/chapter_view.php" class="btn">Voir les chapitres</a>
-            </div>
-        </section>
+    <main class="img_base">
+        <div class="hero-text">
+            <h1>Bienvenue dans Dungeon Xplorer</h1>
+            <h2>Choisissez votre aventure</h2>
+            <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
+            <a href="pages/chapter/chapter_view.php" class="btn">Voir les chapitres</a>
+        </div>
     </main>
 
     <!-- Footer -->

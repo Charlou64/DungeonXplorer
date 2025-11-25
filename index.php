@@ -1,36 +1,82 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
-require_once 'pages/connexion.php';
+require 'autoload.php';
 
-?>
+class Router
+{
+    private $routes = [];
+    private $prefix;
 
+    public function __construct($prefix = '')
+    {
+        $this->prefix = trim($prefix, '/');
+    }
 
-<doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeon Xplorer</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <header>
-        <h1>Bienvenue dans Dungeon Xplorer</h1>
+    public function addRoute($uri, $controllerMethod)
+    {
+        $this->routes[trim($uri, '/')] = $controllerMethod;
+    }
 
-        <nav>
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="chapters.php">Chapitres</a></li>
-                <li><a href="monsters.php">Monstres</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>Choisissez votre aventure</h2>
-        <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
-        <a href="chapters.php" class="btn">Voir les chapitres</a>
-    </main>
-    <footer>
-        <p>&copy; 2024 Dungeon Xplorer. Tous droits réservés.</p>
-    </footer>
-</body>
+    public function route($url)
+    {
+        // Enlève le préfixe du début de l'URL
+        if ($this->prefix && strpos($url, $this->prefix) === 0) {
+            $url = substr($url, strlen($this->prefix) + 1);
+        }
+
+        // Enlève les barres obliques en trop
+        $url = trim($url, '/');
+
+        // Vérification de la correspondance de l'URL à une route définie
+        foreach ($this->routes as $route => $controllerMethod) {
+            // Vérifie si l'URL correspond à une route avec des paramètres
+            $routeParts = explode('/', $route);
+            $urlParts = explode('/', $url);
+
+            // Si le nombre de segments correspond
+            if (count($routeParts) === count($urlParts)) {
+                // Vérification de chaque segment
+                $params = [];
+                $isMatch = true;
+                foreach ($routeParts as $index => $part) {
+                    if (preg_match('/^{\w+}$/', $part)) {
+                        // Capture les paramètres
+                        $params[] = $urlParts[$index];
+                    } elseif ($part !== $urlParts[$index]) {
+                        $isMatch = false;
+                        break;
+                    }
+                }
+
+                if ($isMatch) {
+                    // Extraction du nom du contrôleur et de la méthode
+                    list($controllerName, $methodName) = explode('@', $controllerMethod);
+
+                    // Instanciation du contrôleur et appel de la méthode avec les paramètres
+                    $controller = new $controllerName();
+                    call_user_func_array([$controller, $methodName], $params);
+                    return;
+                }
+            }
+        }
+
+        // Si aucune route n'a été trouvée, gérer l'erreur 404
+        require_once 'views/404.php';
+    }
+}
+
+// Instantiation du routeur - using a more robust approach
+$basePath = 'dungeonXplorer/DungeonXplorer'; 
+$currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$cleanUri = str_replace($basePath, '', $currentUri);
+
+$router = new Router();
+
+// Ajout des routes
+$router->addRoute('', 'HomeController@index');
+
+// Appel de la méthode route
+$router->route(trim($cleanUri, '/'));

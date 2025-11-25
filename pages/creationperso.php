@@ -10,15 +10,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creation de Personnage</title>
     <link href="../styles/main.css" rel="stylesheet">
+    <script src="../scripts/creationperso.js" defer></script>
 </head>
 <body>
-    <h1>Créez votre personnage !</h1>
-    <label class="classe" for="class-select">Choisissez une classe</label>
-    <select class="classe" name="classes" id="class-select">
-        <option value="warrior">Guerrier</option>
-        <option value="rogue">Voleur</option>
-        <option value="mage">Magicien</option>
-    </select>
+    <form action="traitementperso.php" method="post">
+        <h1>Créez votre personnage !</h1>
+        <label class="classe" for="class-select">Choisissez une classe</label>
+        <select class="classe" name="classes" id="class-select">
+            <option value="warrior">Guerrier</option>
+            <option value="rogue">Voleur</option>
+            <option value="mage">Magicien</option>
+        </select>
+        <div class="stats">
+            <label for="hp">Points de Vie : </label>
+            <div id="hp">0</div>
+            <div id="init">Initiative : </div>
+            <div id="strength">Force : </div>
+            <div id="mana">Mana : </div>
+            <div id="stuff">Équipement : </div>
+            <img id="icon" src="../images/warrior.jpg">
+            <div id="desc"></div>
+        </div>
+        <input type="submit" value="Créer Personnage" class="create">
+    </form>
 </select>
 </body>
 </html>

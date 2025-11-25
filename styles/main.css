@@ -1,9 +1,13 @@
 .classe{
     font: 1em "Bookman", serif;
-    font-size: 1.5em;
+    font-size: 7em;
 }
 
 #class-select{
     font: 1em "Bookman", serif;
     size: 5em;
+}
+
+#hp{
+    float: right;
 }

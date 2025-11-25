@@ -24,13 +24,17 @@
         <div class="stats">
             <label for="hp">Points de Vie : </label>
             <div id="hp">0</div>
-            <div id="init">Initiative : </div>
-            <div id="strength">Force : </div>
-            <div id="mana">Mana : </div>
-            <div id="stuff">Équipement : </div>
-            <img id="icon" src="../images/warrior.jpg">
-            <div id="desc"></div>
+            <label for="init">Initiative : </label>
+            <div id="init">0</div>
+            <label for="stren">Force : </label>
+            <div id="stren">0</div>
+            <label for="mana">Mana : </label>
+            <div id="mana">0</div>
+            <label for="hp">Équipement : </label>
+            <div id="stuff">0</div>
         </div>
+        <img id="icon" src="../images/warrior.jpg">
+        <div id="desc"></div>
         <input type="submit" value="Créer Personnage" class="create">
     </form>
 </select>

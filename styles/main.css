@@ -1,6 +1,6 @@
 .classe{
     font: 1em "Bookman", serif;
-    font-size: 7em;
+    font-size: 1.5em;
 }
 
 #class-select{
@@ -9,5 +9,15 @@
 }
 
 #hp{
-    float: right;
+    float: left;
+}
+
+.stats {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stats div {
+    margin-right: 1.5em;
 }

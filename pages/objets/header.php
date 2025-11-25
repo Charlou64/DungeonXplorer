@@ -16,8 +16,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="chapters.php">Chapitres</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../../index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../chapter/chapter_view.php">Chapitres</a></li>
                     <li class="nav-item"><a class="nav-link" href="monsters.php">Monstres</a></li>
                 </ul>
             </div>

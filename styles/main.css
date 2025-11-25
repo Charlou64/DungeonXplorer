@@ -1,0 +1,203 @@
+/* Importation des polices Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@400;700&display=swap');
+
+/* Couleurs de la charte graphique */
+:root {
+    --fond-principal: #1A1A1A;
+    --secondaire: #2E2E2E;
+    --texte-principal: #E5E5E5;
+    --texte-secondaire: #BFBFBF;
+    --accent-or: #C4975E;
+    --accent-rouge: #8B1E1E;
+    --accent-vert-jade: #4A7A66;
+}
+
+/* Corps du site */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--fond-principal);
+    color: var(--texte-principal);
+    margin: 0;
+    padding: 0;
+}
+
+/* Titre principal et sous-titres */
+h1, h2, h3 {
+    font-family: 'Pirata One', cursive;
+    color: var(--texte-principal);
+    margin: 0;
+}
+
+/* Titre principal */
+h1 {
+    font-size: 3rem;
+}
+
+/* Sous-titres */
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+/* Texte secondaire */
+p, li, span {
+    color: var(--texte-secondaire);
+    font-size: 1rem;
+}
+
+/* Boutons */
+button, .btn {
+    background-color: var(--accent-or);
+    color: var(--fond-principal);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .btn:hover {
+    background-color: var(--accent-rouge);
+}
+
+/* Liens */
+a {
+    color: var(--accent-or);
+    text-decoration: none;
+    font-family: 'Pirata One', cursive;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-rouge);
+}
+
+/* Liens secondaires */
+a.secondary {
+    font-family: 'Roboto', sans-serif;
+    color: var(--texte-secondaire);
+}
+
+a.secondary:hover {
+    color: var(--accent-vert-jade);
+}
+
+/* Sections et Panneaux */
+section, .panel {
+    background-color: var(--secondaire);
+    color: var(--texte-principal);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Messages d'alerte */
+.alert {
+    background-color: var(--accent-rouge);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.alert.success {
+    background-color: var(--accent-vert-jade);
+}
+
+/* Formulaires */
+input, textarea {
+    background-color: #333;
+    color: var(--texte-principal);
+    border: 1px solid #555;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent-or);
+    outline: none;
+}
+
+/* Icones Font Awesome */
+.fa {
+    color: var(--accent-or);
+    transition: color 0.3s ease;
+}
+
+.fa:hover {
+    color: var(--accent-rouge);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 900px;
+    background-image: url('../images/scene-fantastique-en-3d.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Texte par-dessus l'image */
+.hero-text {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    z-index: 10;
+    text-shadow: 2px 2px 4px black;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero-text h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondaire);
+    color: var(--texte-principal);
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer h5 {
+    color: var(--accent-or);
+    font-size: 1.2rem;
+}
+
+footer p {
+    margin-top: 10px;
+    color: var(--texte-secondaire);
+}

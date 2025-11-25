@@ -21,9 +21,7 @@ if (isset($_POST["username"], $_POST["password"])) {
         // Vérification du mot de passe
         if (password_verify($password, $user['password_hash'])) {
             $_SESSION["username"] = $user["username"];
-            echo "Connexion réussie !";
-            // Redirection possible
-            // header("Location: dashboard.php");
+            header("Location: account.php");
             exit;
         } else {
             echo "Mot de passe incorrect.";

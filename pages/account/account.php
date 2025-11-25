@@ -3,8 +3,7 @@ require_once '../connexion.php';
 
 session_start();
 if (!isset($_SESSION["username"])) {
-    // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-    header("Location: accountConnect.php");
+    header("Location: signIn.php");
     exit();
 }
 ?>
@@ -21,10 +20,31 @@ if (!isset($_SESSION["username"])) {
     <!-- header -->
 
     <main>
-        <h2>Bienvenue sur votre page de compte</h2>
-        <p>Gérez vos informations personnelles, consultez votre historique de jeu et modifiez vos préférences.</p>
-        <!-- Contenu spécifique au compte utilisateur -->
+        <h2>Bienvenue, <?php echo htmlspecialchars($_SESSION["username"]); ?> !</h2>
+
+        <section>
+            <h3>Informations du compte</h3>
+
+            <?php
+                // Récupération des infos utilisateur
+                $stmt = $bdd->prepare("SELECT username, email, created_at FROM Users WHERE username = :username");
+                $stmt->execute([':username' => $_SESSION["username"]]);
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            ?>
+
+            <p><strong>Nom d'utilisateur :</strong> <?php echo htmlspecialchars($user["username"]); ?></p>
+            <p><strong>Email :</strong> <?php echo htmlspecialchars($user["email"]); ?></p>
+            <p><strong>Membre depuis :</strong> <?php echo htmlspecialchars($user["created_at"]); ?></p>
+        </section>
+
+        <section>
+            <h3>Déconnexion</h3>
+            <form action="logout.php" method="post">
+                <button type="submit">Se déconnecter</button>
+            </form>
+        </section>
     </main>
+
     
     <!-- footer -->
 </body>

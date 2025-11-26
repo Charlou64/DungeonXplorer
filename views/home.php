@@ -1,30 +1,36 @@
-<doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dungeon Xplorer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Bienvenue dans Dungeon Xplorer</h1>
 
-        <nav>
-            <ul>
-                <li><a href="index.php">Accueil</a></li>
-                <li><a href="chapters.php">Chapitres</a></li>
-                <li><a href="monsters.php">Monstres</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navbar -->
+    <?php
+        require_once 'objets/header.php'
+    ?>
+
+    <!-- Main Content (Hero Section) -->
     <main>
-        <h2>Choisissez votre aventure</h2>
-        <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
-        <a href="chapters.php" class="btn">Voir les chapitres</a>
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1>Bienvenue dans Dungeon Xplorer</h1>
+                <h2>Choisissez votre aventure</h2>
+                <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
+                <a href="chapter/1" class="btn">Voir les chapitres</a>
+            </div>
+        </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Dungeon Xplorer. Tous droits réservés.</p>
-    </footer>
+
+    <!-- Footer -->
+    <?php
+        require_once 'objets/footer.php'
+    ?>
+    <!-- JS Bootstrap + Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

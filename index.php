@@ -3,7 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require 'autoload.php';
+require_once 'models/autoload.php';
+require_once 'models/connexion.php';
 
 class Router
 {
@@ -69,7 +70,7 @@ class Router
 }
 
 // Instantiation du routeur - using a more robust approach
-$basePath = 'dungeonXplorer/DungeonXplorer'; 
+$basePath = '/dungeonXplorer/DungeonXplorer'; 
 $currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $cleanUri = str_replace($basePath, '', $currentUri);
 
@@ -77,6 +78,11 @@ $router = new Router();
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index');
+$router->addRoute('chapter/{id}', 'ChapterController@show');
+
+echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";
+echo "currentUri: " . $currentUri . "<br>";
+echo "cleanUri: " . $cleanUri . "<br>";
 
 // Appel de la méthode route
 $router->route(trim($cleanUri, '/'));

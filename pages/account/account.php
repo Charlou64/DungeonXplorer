@@ -14,12 +14,14 @@ if (!isset($_SESSION["username"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte Utilisateur - Dungeon Xplorer</title>
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- header -->
-
-    <main>
+    <?php require_once '../objets/header.php'; ?>
+    <main class="img_base">
+        <!--
         <h2>Bienvenue, <?php echo htmlspecialchars($_SESSION["username"]); ?> !</h2>
 
         <section>
@@ -43,8 +45,33 @@ if (!isset($_SESSION["username"])) {
                 <button type="submit">Se déconnecter</button>
             </form>
         </section>
+-->
+        <div class="container my-5 justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title text-center mb-4">Informations du compte</h2>
+                            <div class="mb-3">
+                                <p class=" font-text"><strong>Nom d'utilisateur :</strong> <?php echo htmlspecialchars($user["username"]); ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <p class=" font-text"><strong>Email :</strong> <?php echo htmlspecialchars($user["email"]); ?></p>
+                            </div>
+                            <div class="mb-3">
+                                <p class=" font-text"><strong>Membre depuis :</strong> <?php echo htmlspecialchars($user["created_at"]); ?></p>
+                            </div>
+                            <form action="logout.php" method="post">
+                                <button type="submit" class="couleur-bouton w-100">Se déconnecter</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     
     <!-- footer -->
+    <?php require_once '../objets/footer.php'; ?>
 </body>

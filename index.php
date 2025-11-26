@@ -25,11 +25,10 @@
         <div class="hero-text">
             <h1>Bienvenue dans Dungeon Xplorer</h1>
             <h2>Choisissez votre aventure</h2>
-            <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
-            <a href="pages/chapter/chapter_view.php" class="btn">Voir les chapitres</a>
+            <p class="text-light">Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
+            <a href="pages/chapter/chapter_view.php" class="btn text-light">Voir les chapitres</a>
         </div>
     </main>
-
     <!-- Footer -->
     <?php
         require_once 'pages/objets/footer.php'

@@ -237,3 +237,8 @@ footer p {
     min-height: 2.5em;
     border: #ffffff;
 }
+
+.logo_dungeon{
+    max-width: 1em;
+    max-height: 1em;
+}

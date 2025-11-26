@@ -13,12 +13,12 @@
     float: left;
 }
 
-.stats {
+#stats {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.stats div {
+#stats div {
     margin-right: 1.5em;
 }/* FIN BRANCHE PERSONNAGE */

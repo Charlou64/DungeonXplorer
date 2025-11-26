@@ -23,17 +23,17 @@
             <option value="rogue">Voleur</option>
             <option value="mage">Magicien</option>
         </select>
-        <div class="stats">
+        <div id="stats">
             <label for="hp">Points de Vie : </label>
-            <div id="hp">0</div>
+            <div class="stat" id="hp">0</div>
             <label for="init">Initiative : </label>
-            <div id="init">0</div>
+            <div class="stat" id="init">0</div>
             <label for="stren">Force : </label>
-            <div id="stren">0</div>
+            <div class="stat" id="stren">0</div>
             <label for="mana">Mana : </label>
-            <div id="mana">0</div>
+            <div class="stat" id="mana">0</div>
             <label for="hp">Équipement : </label>
-            <div id="stuff">0</div>
+            <div class="stat" id="stuff">0</div>
         </div>
         <img id="icon" src="../images/rien.jpg">
         <div id="desc">...</div>

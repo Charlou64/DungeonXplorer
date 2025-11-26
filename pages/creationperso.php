@@ -1,5 +1,5 @@
 <?php
- //   require_once "connexion.php"
+    require_once "connexion.php";
 
 ?>
 
@@ -13,10 +13,12 @@
     <script src="../scripts/creationperso.js" defer></script>
 </head>
 <body>
+    
     <form action="traitementperso.php" method="post">
         <h1>Créez votre personnage !</h1>
         <label class="classe" for="class-select">Choisissez une classe</label>
-        <select class="classe" name="classes" id="class-select">
+        <select class="classe" name="classes" id="class-select" required>
+            <option value="void"></option>
             <option value="warrior">Guerrier</option>
             <option value="rogue">Voleur</option>
             <option value="mage">Magicien</option>
@@ -33,8 +35,8 @@
             <label for="hp">Équipement : </label>
             <div id="stuff">0</div>
         </div>
-        <img id="icon" src="../images/warrior.jpg">
-        <div id="desc"></div>
+        <img id="icon" src="../images/rien.jpg">
+        <div id="desc">...</div>
         <input type="submit" value="Créer Personnage" class="create">
     </form>
 </select>

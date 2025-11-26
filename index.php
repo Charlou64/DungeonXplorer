@@ -3,6 +3,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+session_start();
+
 require_once 'models/autoload.php';
 require_once 'models/connexion.php';
 
@@ -74,11 +76,16 @@ $basePath = '/dungeonXplorer/DungeonXplorer';
 $currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $cleanUri = str_replace($basePath, '', $currentUri);
 
+$_SESSION["basepath"] = $basePath;
+
 $router = new Router();
 
 // Ajout des routes
 $router->addRoute('', 'HomeController@index');
 $router->addRoute('chapter/{id}', 'ChapterController@show');
+$router->addRoute('account', 'AccountController@index');
+$router->addRoute('account/signIn', 'SignInController@index');
+$router->addRoute('account/signUp', 'SignUpController@index');
 
 echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";
 echo "currentUri: " . $currentUri . "<br>";

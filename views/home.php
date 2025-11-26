@@ -15,20 +15,17 @@
     ?>
 
     <!-- Main Content (Hero Section) -->
-    <main>
-        <section class="hero-section">
-            <div class="hero-text">
-                <h1>Bienvenue dans Dungeon Xplorer</h1>
-                <h2>Choisissez votre aventure</h2>
-                <p>Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
-                <a href="chapter/1" class="btn">Voir les chapitres</a>
-            </div>
-        </section>
+    <main class="img_base">
+        <div class="hero-text">
+            <h1>Bienvenue dans Dungeon Xplorer</h1>
+            <h2>Choisissez votre aventure</h2>
+            <p class="text-light">Plongez dans un monde rempli de mystères, de monstres et de trésors. Sélectionnez un chapitre pour commencer votre quête!</p>
+            <a href="<?php echo $_SESSION["basepath"]; ?>/chapter/1" class="btn text-light">Voir les chapitres</a>
+        </div>
     </main>
-
     <!-- Footer -->
     <?php
-        require_once 'objets/footer.php'
+        require_once 'views/objets/footer.php'
     ?>
     <!-- JS Bootstrap + Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

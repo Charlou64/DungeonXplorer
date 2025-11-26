@@ -22,9 +22,9 @@ body {
 }
 
 /* Titre principal et sous-titres */
-h1, h2, h3 {
+h1, h2, h3, .font-text{
     font-family: 'Pirata One', cursive;
-    color: var(--texte-principal);
+    color: var(--font-principal);
     margin: 0;
 }
 
@@ -49,7 +49,7 @@ p, li, span {
 }
 
 /* Boutons */
-button, .btn {
+.button, .btn {
     background-color: var(--accent-or);
     color: var(--fond-principal);
     border: none;
@@ -61,7 +61,26 @@ button, .btn {
     transition: background-color 0.3s ease;
 }
 
-button:hover, .btn:hover {
+/* Style pour les éléments de la navigation */
+.nav-item .bouton-nav {
+    background-color: var(--accent-or); /* Même couleur d'accent que les autres liens */
+    color: var(--fond-principal); /* Texte blanc pour contraste */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Style au survol du bouton Sign-in */
+.nav-item .bouton-nav:hover {
+    background-color: var(--accent-rouge); /* Change à l'accent rouge au survol */
+}
+
+
+.button:hover, .btn:hover {
     background-color: var(--accent-rouge);
 }
 
@@ -110,13 +129,14 @@ section, .panel {
 }
 
 /* Formulaires */
-input, textarea {
-    background-color: #333;
-    color: var(--texte-principal);
+.input, .textarea {
+    background-color: #ffffff;
+    /*color: var(--texte-principal);*/
     border: 1px solid #555;
     padding: 10px;
     width: 100%;
     border-radius: 5px;
+    margin-left: 25px;
 }
 
 input:focus, textarea:focus {
@@ -135,11 +155,21 @@ input:focus, textarea:focus {
 }
 
 /* Hero Section */
-.hero-section {
+.hero-section {    
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img_base{
+    background-image: url('../images/scene-fantastique-en-3d.jpg');
     position: relative;
     width: 100%;
     height: 900px;
-    background-image: url('../images/scene-fantastique-en-3d.jpg');
+    
     background-size: cover;
     background-position: center;
     display: flex;
@@ -154,6 +184,7 @@ input:focus, textarea:focus {
     font-weight: bold;
     z-index: 10;
     text-shadow: 2px 2px 4px black;
+    
 }
 
 .hero-text h1 {
@@ -169,15 +200,6 @@ input:focus, textarea:focus {
 .hero-text p {
     font-size: 1.2rem;
     margin: 10px 0;
-}
-
-.btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
 }
 
 .btn:hover {
@@ -200,4 +222,23 @@ footer h5 {
 footer p {
     margin-top: 10px;
     color: var(--texte-secondaire);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* S'assure que l'élément prend toute la hauteur disponible */
+}
+
+
+.couleur-bouton{
+    background-color: var(--accent-or); 
+    border-radius: 7.5px;
+    min-height: 2.5em;
+    border: #ffffff;
+}
+
+.logo_dungeon{
+    max-width: 1em;
+    max-height: 1em;
 }

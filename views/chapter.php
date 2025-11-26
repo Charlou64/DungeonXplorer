@@ -15,6 +15,8 @@ if (!isset($chapter)) {
     <title><?php echo $chapter->getTitle(); ?></title>
 </head>
 <body>
+    <?php require_once 'views/objets/header.php'; ?>
+
     <h1><?php echo $chapter->getTitle(); ?></h1>
     <img src="<?php echo $chapter->getImage(); ?>" alt="Image de chapitre" style="max-width: 100%; height: auto;">
     <p><?php echo $chapter->getDescription(); ?></p>
@@ -29,5 +31,7 @@ if (!isset($chapter)) {
             </li>
         <?php endforeach; ?>
     </ul>
+
+    <?php require_once 'views/objets/footer.php'; ?>
 </body>
 </html>

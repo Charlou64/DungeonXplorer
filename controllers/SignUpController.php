@@ -1,6 +1,7 @@
 <?php
 class SignUpController {
     public function index() {
+        global $bdd;
         if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"])) {
             $username = $_POST["username"];
             $email = $_POST["email"];
@@ -15,6 +16,8 @@ class SignUpController {
 
             if ($stmt->execute()) {
                 $_SESSION["username"] = $username;
+                header('Location: account');
+                exit;
             }
         }
 

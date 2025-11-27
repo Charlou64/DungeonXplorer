@@ -1,6 +1,7 @@
 <?php
 class SignInController {
     public function index() {
+        global $bdd;
         if (isset($_POST["username"], $_POST["password"])) {
             $username = $_POST["username"];
             $password = $_POST["password"];
@@ -19,7 +20,7 @@ class SignInController {
                 // Vérification du mot de passe
                 if (password_verify($password, $user['password_hash'])) {
                     $_SESSION["username"] = $user["username"];
-                    header("Location: account.php");
+                    header('Location: ../account');
                     exit;
                 } else {
                     echo "Mot de passe incorrect.";

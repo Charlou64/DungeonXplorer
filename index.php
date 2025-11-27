@@ -86,13 +86,14 @@ $router->addRoute('chapter/{id}', 'ChapterController@show');
 $router->addRoute('account', 'AccountController@index');
 $router->addRoute('account/signIn', 'SignInController@index');
 $router->addRoute('account/signUp', 'SignUpController@index');
+$router->addRoute('logout', 'LogoutController@index');
 
-/*
+
 // debug purposes
 echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";
 echo "currentUri: " . $currentUri . "<br>";
 echo "cleanUri: " . $cleanUri . "<br>";
-*/
+
 
 // Appel de la méthode route
 $router->route(trim($cleanUri, '/'));

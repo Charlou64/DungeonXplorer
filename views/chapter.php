@@ -13,7 +13,7 @@ if (!isset($chapter)) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $chapter->getTitle(); ?></title>
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="<?php echo $_SESSION["basepath"]; ?>/styles/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>

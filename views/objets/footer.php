@@ -1,8 +1,8 @@
-<!-- CSS Bootstrap -->
+<!-- CSS Bootstrap
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- JS Bootstrap + Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+JS Bootstrap + Popper
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>-->
 
 <footer class="bg-dark text-white py-4 flex-grow-1">
         <div class="container">

@@ -3,6 +3,7 @@
 // controllers/ChapterController.php
 
 require_once 'models/chapterModel.php';
+require_once 'models/connexion.php';
 
 class ChapterController
 {
@@ -10,29 +11,30 @@ class ChapterController
 
     public function __construct()
     {
-        // Exemple de chapitres avec des images
-        $this->chapters[] = new Chapter(
-            1,
-            "La Forêt Enchantée",
-            "Vous vous trouvez dans une forêt sombre et enchantée. Deux chemins se présentent à vous.",
-            "images/forêt.jpg", // Chemin vers l'image
-            [
-                ["text" => "Aller à gauche", "chapter" => 2],
-                ["text" => "Aller à droite", "chapter" => 3]
-            ]
-        );
+        global $bdd;
 
-        $this->chapters[] = new Chapter(
-            2,
-            "Le Lac Mystérieux",
-            "Vous arrivez à un lac aux eaux limpides. Une créature vous observe.",
-            "images/lac.jpg", // Chemin vers l'image
-            [
-                ["text" => "Nager dans le lac", "chapter" => 4],
-                ["text" => "Faire demi-tour", "chapter" => 1]
-            ]
-        );
+        try {
+            $stmt = $bdd->query("SELECT id, content, image FROM Chapter ORDER BY id ASC");
+            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+            foreach ($rows as $row) {
+                $id = (int) $row['id'];
+                $content = $row['content'];
+                $image = $row['image'] ?? '';
+
+                // Adaptation : la table ne contient pas de title/choices => valeurs par défaut
+                $title = "Chapitre " . $id;
+                $description = $content;
+                $choices = []; // à gérer plus tard si stockés en base
+
+                $this->chapters[] = new Chapter($id, $title, $description, $image, $choices);
+            }
+        } catch (PDOException $e) {
+            if (defined('DEBUG') && DEBUG) {
+                error_log('Erreur requête Chapter : ' . $e->getMessage());
+            }
+            $this->chapters = [];
+        }
     }
 
     public function show($id)

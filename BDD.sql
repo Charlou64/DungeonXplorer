@@ -164,3 +164,14 @@ add constraint fk_compte FOREIGN KEY (compte_id) REFERENCES Users(id);
 /*SELECT CONCAT('DROP TABLE `', table_name, '`;')
 FROM information_schema.tables
 WHERE table_schema = 'dungeonXplorer';*/
+
+-- INSERTIONS DE TESTS
+INSERT INTO Chapter (id, content, image) VALUES
+(1, 'La Forêt Enchantée
+
+Vous vous trouvez dans une forêt sombre et enchantée. Deux chemins se présentent à vous.', 'images/forêt.jpg');
+
+INSERT INTO Chapter (id, content, image) VALUES
+(2, 'Le Lac Mystérieux
+
+Vous arrivez à un lac aux eaux limpides. Une créature vous observe.', 'images/lac.jpg');

@@ -13,6 +13,8 @@ if (!isset($chapter)) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo $chapter->getTitle(); ?></title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <?php require_once 'views/objets/header.php'; ?>
@@ -33,5 +35,7 @@ if (!isset($chapter)) {
     </ul>
 
     <?php require_once 'views/objets/footer.php'; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

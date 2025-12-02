@@ -26,6 +26,6 @@ JS Bootstrap + Popper
             </div>
         </div>
         <div class="text-center mt-4">
-            <p>&copy; 2024 Dungeon Xplorer. Tous droits réservés.</p>
+            <p>&copy; 2025 Dungeon Xplorer. Tous droits réservés.</p>
         </div>
     </footer>

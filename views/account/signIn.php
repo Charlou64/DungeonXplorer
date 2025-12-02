@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compte Utilisateur - Dungeon Xplorer</title>
-    <link rel="stylesheet" href="<?php echo $_SESSION["basepath"]; ?>/styles/main.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo $_SESSION["basepath"]; ?>/styles/main.css">
 </head>
 <body>
     <!-- header -->
@@ -27,7 +27,7 @@
                                     <label for="password" class="font-text">Mot de passe :</label>
                                     <input type="password" id="password" name="password" class="form-control" required>
                                 </div>
-                                <button type="submit" class="couleur-bouton w-100">Se connecter</button>
+                                <button type="submit" class="btn w-100">Se connecter</button>
                             </form>
                         </div>
                     </div>

@@ -1,244 +1,211 @@
-/* Importation des polices Google Fonts */
+/* =========================================
+   1. IMPORTS & VARIABLES
+   ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Roboto:wght@400;700&display=swap');
 
-/* Couleurs de la charte graphique */
 :root {
-    --fond-principal: #1A1A1A;
-    --secondaire: #2E2E2E;
-    --texte-principal: #E5E5E5;
-    --texte-secondaire: #BFBFBF;
-    --accent-or: #C4975E;
-    --accent-rouge: #8B1E1E;
-    --accent-vert-jade: #4A7A66;
+    --fond-principal: #1A1A1A;     /* Noir profond */
+    --secondaire: #2E2E2E;         /* Gris foncé (pour les cartes/nav) */
+    --texte-principal: #E5E5E5;    /* Blanc cassé */
+    --texte-secondaire: #BFBFBF;   /* Gris clair */
+    --accent-or: #C4975E;          /* Or (Boutons, Liens) */
+    --accent-rouge: #8B1E1E;       /* Rouge (Hover, Erreurs) */
+    --accent-vert: #4A7A66;        /* Vert (Succès) */
+    --bordure: #444444;            /* Couleur des bordures discrètes */
 }
 
-/* Corps du site */
+/* =========================================
+   2. BASE & TYPOGRAPHIE
+   ========================================= */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--fond-principal);
     color: var(--texte-principal);
-    margin: 0;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Force le footer en bas */
 }
 
-/* Titre principal et sous-titres */
-h1, h2, h3, .font-text{
+h1, h2, h3, h4, h5, h6, 
+.navbar-brand, 
+.font-title {
     font-family: 'Pirata One', cursive;
-    color: var(--font-principal);
-    margin: 0;
-}
-
-/* Titre principal */
-h1 {
-    font-size: 3rem;
-}
-
-/* Sous-titres */
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-/* Texte secondaire */
-p, li, span {
-    color: var(--texte-secondaire);
-    font-size: 1rem;
-}
-
-/* Boutons */
-.button, .btn {
-    background-color: var(--accent-or);
     color: var(--texte-principal);
-    border: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-bottom: 1rem;
 }
 
-/* Style pour les éléments de la navigation */
-.nav-item .bouton-nav {
-    background-color: var(--accent-or); /* Même couleur d'accent que les autres liens */
-    color: var(--fond-principal); /* Texte blanc pour contraste */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* On force la couleur des titres même s'ils sont dans des conteneurs Bootstrap */
+.text-light h1, .text-light h2, .text-light p {
+    color: var(--texte-principal) !important;
 }
 
-/* Style au survol du bouton Sign-in */
-.nav-item .bouton-nav:hover {
-    background-color: var(--accent-rouge); /* Change à l'accent rouge au survol */
+p, li, span, td {
+    color: var(--texte-secondaire);
+    line-height: 1.6;
 }
 
-
-.button:hover, .btn:hover {
-    background-color: var(--accent-rouge);
-}
-
-/* Liens */
 a {
     color: var(--accent-or);
     text-decoration: none;
-    font-family: 'Pirata One', cursive;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 a:hover {
     color: var(--accent-rouge);
 }
 
-/* Liens secondaires */
-a.secondary {
-    font-family: 'Roboto', sans-serif;
-    color: var(--texte-secondaire);
+/* =========================================
+   3. OVERRIDE BOOTSTRAP (THEMING)
+   Ici, on modifie Bootstrap pour qu'il ressemble à ton jeu
+   sans changer les classes HTML.
+   ========================================= */
+
+/* Navbar */
+.navbar-brand {
+    margin-bottom: 0 !important; /* Annule la marge qui pousse le titre vers le haut */
+    display: flex; /* Assure un alignement parfait avec le h3 */
+    align-items: center;
+}
+.navbar {
+    background-color: var(--secondaire) !important; /* Force le gris foncé */
+    border-bottom: 1px solid var(--accent-or);
+    padding: 1rem;
 }
 
-a.secondary:hover {
-    color: var(--accent-vert-jade);
-}
-
-/* Sections et Panneaux */
-section, .panel {
-    background-color: var(--secondaire);
-    color: var(--texte-principal);
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-/* Messages d'alerte */
-.alert {
-    background-color: var(--accent-rouge);
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    font-weight: bold;
-}
-
-.alert.success {
-    background-color: var(--accent-vert-jade);
-}
-
-/* Formulaires */
-.input, .textarea {
-    background-color: #ffffff;
-    /*color: var(--texte-principal);*/
-    border: 1px solid #555;
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-    margin-left: 25px;
-}
-
-input:focus, textarea:focus {
-    border-color: var(--accent-or);
-    outline: none;
-}
-
-/* Icones Font Awesome */
-.fa {
+.navbar-brand h3 {
     color: var(--accent-or);
-    transition: color 0.3s ease;
-}
-
-.fa:hover {
-    color: var(--accent-rouge);
-}
-
-/* Hero Section */
-.hero-section {    
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.img_base{
-    background-image: url('../images/scene-fantastique-en-3d.jpg');
-    position: relative;
-    width: 100%;
-    height: 900px;
-    
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Texte par-dessus l'image */
-.hero-text {
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    z-index: 10;
-    text-shadow: 2px 2px 4px black;
-    
-}
-
-.hero-text h1 {
-    font-size: 3rem;
     margin: 0;
 }
 
-.hero-text h2 {
-    font-size: 2rem;
-    margin: 10px 0;
-}
-
-.hero-text p {
+.nav-link {
+    color: var(--texte-principal) !important;
+    font-family: 'Pirata One', cursive;
     font-size: 1.2rem;
-    margin: 10px 0;
+    margin: 0 10px;
 }
 
-.btn:hover {
-    background-color: #0056b3;
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-or) !important;
+}
+
+/* Cards (Utilisé dans account.php et signIn.php) */
+.card {
+    /* Fond noir semi-transparent */
+    background-color: rgba(30, 30, 30, 0.85); 
+    backdrop-filter: blur(5px); /* Effet de flou derrière la carte (super stylé) */
+    border: 1px solid var(--accent-or); /* Bordure dorée pour bien délimiter */
+    color: var(--texte-principal);
+}
+.card-title {
+    color: var(--accent-or);
+}
+
+/* Inputs & Formulaires */
+.form-control {
+    background-color: var(--fond-principal);
+    border: 1px solid var(--bordure);
+    color: var(--texte-principal);
+}
+
+.form-control:focus {
+    background-color: var(--fond-principal);
+    border-color: var(--accent-or);
+    color: var(--texte-principal);
+    box-shadow: 0 0 0 0.25rem rgba(196, 151, 94, 0.25); /* Glow doré */
+}
+
+/* Boutons (Remplace .couleur-bouton, .btn, .button) */
+.btn, .button, button[type="submit"] {
+    background-color: var(--accent-or);
+    color: #000 !important; /* Texte noir pour lisibilité sur l'or */
+    border: none;
+    font-family: 'Pirata One', cursive;
+    font-size: 1.2rem;
+    padding: 10px 24px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* État survol des boutons */
+.btn:hover, .button:hover, button[type="submit"]:hover {
+    background-color: var(--accent-rouge);
+    color: var(--texte-principal) !important; /* Texte blanc sur rouge */
+}
+
+/* List Groups (Choix des chapitres) */
+.list-group-item {
+    background-color: transparent;
+    border: none;
+    padding: 10px 0;
 }
 
 /* Footer */
-footer {
-    background-color: var(--secondaire);
-    color: var(--texte-principal);
-    padding: 40px 0;
-    text-align: center;
+footer.bg-dark {
+    background-color: var(--secondaire) !important;
+    border-top: 1px solid var(--bordure);
+    margin-top: auto; /* Pousse le footer en bas */
 }
 
 footer h5 {
     color: var(--accent-or);
-    font-size: 1.2rem;
 }
 
-footer p {
-    margin-top: 10px;
-    color: var(--texte-secondaire);
-}
+/* =========================================
+   4. COMPOSANTS SPÉCIFIQUES (HERO & CUSTOM)
+   ========================================= */
 
-.container {
+/* Hero Section (Image de fond) */
+.img_base {
+    position: relative;
+    width: 100%;
+    /* Au lieu de height: 900px, on utilise min-height pour s'adapter à l'écran */
+    min-height: calc(100vh - 160px); /* 100% hauteur écran moins approx header/footer */
+    background-image: url('../images/scene-fantastique-en-3d.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
-    flex-direction: column;
-    min-height: 100%; /* S'assure que l'élément prend toute la hauteur disponible */
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
 }
 
-
-.couleur-bouton{
-    background-color: var(--accent-or); 
-    border-radius: 7.5px;
-    min-height: 2.5em;
-    border: #ffffff;
+.img_base .container {
+    position: relative; /* Indispensable pour le z-index */
+    z-index: 5;         /* Force le contenu à passer DEVANT le filtre noir */
 }
 
-.logo_dungeon{
-    max-width: 1em;
-    max-height: 1em;
+/* Overlay sombre pour rendre le texte lisible sur l'image */
+.img_base::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6); /* Assombrit l'image de 60% */
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2; /* Au-dessus de l'overlay */
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    color: var(--accent-or);
+    text-shadow: 2px 2px 4px #000;
+}
+
+.hero-text h2 {
+    font-size: 2rem;
+    color: var(--texte-principal);
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    color: var(--texte-secondaire);
+    margin-bottom: 2rem;
 }

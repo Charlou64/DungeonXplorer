@@ -1,4 +1,4 @@
-/* BRANCHE PERSONNAGE */
+/* BRANCHE PERSONNAGE 
 .classe{
     font: 1em "Bookman", serif;
     font-size: 1.5em;
@@ -21,4 +21,139 @@
 
 #stats div {
     margin-right: 1.5em;
-}/* FIN BRANCHE PERSONNAGE */
+} FIN BRANCHE PERSONNAGE */
+
+/* Fond général de la page */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #1c1c1c; /* Un gris foncé */
+    color: #ddd; /* Texte clair pour contraster */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Le formulaire */
+form {
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond sombre semi-transparent */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    width: 35em;
+    text-align: center;
+    align-items: center;
+    border: 2px solid #4e4e4e;
+}
+
+/* Titre du formulaire */
+h1 {
+    font-family: 'Cloister Black', serif; /* Police gothique */
+    color: #e1c5a2; /* Une couleur dorée/grise pour l'élégance */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Labels et éléments du formulaire */
+label {
+    font-size: 1.2em;
+    color: #f1f1f1;
+    margin-top: 10px;
+}
+
+label, .classe{
+    align-self: left;
+}
+
+/* Sélecteur de classe */
+select, .classe {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #444;
+    padding: 8px;
+    margin-top: 5px;
+    width: 100%;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+/* Conteneur des statistiques */
+#stats {
+    margin-top: 20px;
+    text-align: left;
+}
+
+/* Statistiques */
+.stat {
+    background-color: #444;
+    color: #d8ac34;
+    padding: 5px 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+/* Image d'icône */
+#icon {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* Description */
+#desc {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: #aaa;
+    padding: 10px;
+    background-color: #333;
+    border-radius: 8px;
+}
+
+/* Bouton de soumission */
+input[type="submit"] {
+    background-color: #e1c5a2; /* Or pâle */
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #c19a6b; /* Or plus foncé */
+}
+
+/* Bouton Relancer */
+#reroll {
+    background-color: #555; /* Couleur de fond sombre pour le bouton */
+    color: #e1c5a2; /* Couleur or */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#reroll i {
+    margin-right: 10px; /* Espace entre l'icône et le texte */
+}
+
+/* Pour les éléments flexibles dans le formulaire */
+form > * {
+    margin-bottom: 15px;
+}

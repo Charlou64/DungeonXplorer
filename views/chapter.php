@@ -1,11 +1,11 @@
 <?php
-require_once 'controllers/ChapterController.php'; // Assurez-vous que ce chemin est correct
+// views/chapter.php
+
+require_once 'controllers/ChapterController.php';
 if (!isset($chapter)) {
-    // Si la variable $chapter n'est pas définie, redirige vers une page d'erreur ou affiche un message
-    echo "Chapitre non défini.";
+    include 'views/404.php';
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -23,16 +23,25 @@ if (!isset($chapter)) {
     <img src="<?php echo $chapter->getImage(); ?>" alt="Image de chapitre" style="max-width: 100%; height: auto;">
     <p><?php echo $chapter->getDescription(); ?></p>
 
-    <h2>Choisissez votre chemin:</h2>
-    <ul>
-        <?php foreach ($chapter->getChoices() as $choice): ?>
-            <li>
-                <a href="index.php?chapter=<?php echo $choice['chapter']; ?>">
-                    <?php echo $choice['text']; ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+    <?php 
+        $choices = $chapter->getChoices(); // Récupération des choix
+
+        if (count($choices) > 0) {
+            echo '
+            <h2>Choisissez votre chemin:</h2>
+            <ul class="list-group">'; 
+            
+            foreach ($choices as $choice) {
+                // Syntaxe PHP correcte et bonnes clés : 'next_chapter_id' et 'description'
+                echo '<li class="list-group-item">
+                        <a href="' . $_SESSION["basepath"] . '/chapter/' . $choice['next_chapter_id'] . '" class="btn btn-primary">
+                            ' . htmlspecialchars($choice['description']) . '
+                        </a>
+                    </li>';
+            }
+            echo '</ul>';
+        } 
+    ?>
 
     <?php require_once 'views/objets/footer.php'; ?>
 

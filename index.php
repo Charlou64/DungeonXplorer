@@ -90,10 +90,11 @@ $router->addRoute('logout', 'LogoutController@index');
 
 
 // debug purposes
+/*
 echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";
 echo "currentUri: " . $currentUri . "<br>";
 echo "cleanUri: " . $cleanUri . "<br>";
-
+*/
 
 // Appel de la méthode route
 $router->route(trim($cleanUri, '/'));

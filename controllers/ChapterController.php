@@ -14,24 +14,39 @@ class ChapterController
         global $bdd;
 
         try {
-            $stmt = $bdd->query("SELECT id, content, image FROM Chapter ORDER BY id ASC");
-            $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // 1. Récupération des chapitres
+            $stmtChapters = $bdd->query("SELECT id, content, image FROM Chapter ORDER BY id ASC");
+            $chapterRows = $stmtChapters->fetchAll(PDO::FETCH_ASSOC);
 
-            foreach ($rows as $row) {
+            // 2. Récupération des liens
+            $stmtLinks = $bdd->query("SELECT chapter_id, next_chapter_id, description FROM Links ORDER BY chapter_id, next_chapter_id");
+            $linkRows = $stmtLinks->fetchAll(PDO::FETCH_ASSOC);
+
+            // 3. Organisation des liens
+            $linksByChapter = [];
+            foreach ($linkRows as $link) {
+                $chapterId = (int) $link['chapter_id'];
+                $linksByChapter[$chapterId][] = [
+                    'next_chapter_id' => (int) $link['next_chapter_id'],
+                    'description' => $link['description']
+                ];
+            }
+
+            // 4. Construction des objets
+            foreach ($chapterRows as $row) {
                 $id = (int) $row['id'];
                 $content = $row['content'];
                 $image = $row['image'] ?? '';
 
-                // Adaptation : la table ne contient pas de title/choices => valeurs par défaut
                 $title = "Chapitre " . $id;
                 $description = $content;
-                $choices = []; // à gérer plus tard si stockés en base
+                $choices = $linksByChapter[$id] ?? []; // Récupération des choix
 
                 $this->chapters[] = new Chapter($id, $title, $description, $image, $choices);
             }
         } catch (PDOException $e) {
             if (defined('DEBUG') && DEBUG) {
-                error_log('Erreur requête Chapter : ' . $e->getMessage());
+                error_log('Erreur BDD dans ChapterController::__construct : ' . $e->getMessage());
             }
             $this->chapters = [];
         }

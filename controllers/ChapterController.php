@@ -14,9 +14,8 @@ class ChapterController
         global $bdd;
 
         try {
-            // 1. Récupération des chapitres
-            $stmtChapters = $bdd->query("SELECT id, content, image FROM Chapter ORDER BY id ASC");
-            $chapterRows = $stmtChapters->fetchAll(PDO::FETCH_ASSOC);
+            $chapterRows = $bdd->query("SELECT id, titre, content, image FROM Chapter ORDER BY id ASC");
+            $rows = $chapterRows->fetchAll(PDO::FETCH_ASSOC);
 
             // 2. Récupération des liens
             $stmtLinks = $bdd->query("SELECT chapter_id, next_chapter_id, description FROM Links ORDER BY chapter_id, next_chapter_id");
@@ -33,13 +32,12 @@ class ChapterController
             }
 
             // 4. Construction des objets
-            foreach ($chapterRows as $row) {
+            foreach ($rows as $row) {
                 $id = (int) $row['id'];
-                $content = $row['content'];
+                $title = $row['titre'];
+                $description = $row['content'];
                 $image = $row['image'] ?? '';
 
-                $title = "Chapitre " . $id;
-                $description = $content;
                 $choices = $linksByChapter[$id] ?? []; // Récupération des choix
 
                 $this->chapters[] = new Chapter($id, $title, $description, $image, $choices);

@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /dungeonXplorer/DungeonXplorer/
+    RewriteBase /dungeonxplorer/DungeonXplorer/
     
     # Si ce n'est pas un fichier ou un dossier existant
     RewriteCond %{REQUEST_FILENAME} !-f

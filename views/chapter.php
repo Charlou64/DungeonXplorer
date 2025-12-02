@@ -19,7 +19,8 @@ if (!isset($chapter)) {
 <body>
     <?php require_once 'views/objets/header.php'; ?>
 
-    <h1><?php echo $chapter->getTitle(); ?></h1>
+    <h1>Chapitre <?php echo $chapter->getId(); ?></h1>
+    <h2><?php echo $chapter->getTitle(); ?></h2>
     <img src="<?php echo $chapter->getImage(); ?>" alt="Image de chapitre" style="max-width: 100%; height: auto;">
     <p><?php echo $chapter->getDescription(); ?></p>
 

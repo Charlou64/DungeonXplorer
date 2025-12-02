@@ -48,6 +48,7 @@ CREATE TABLE `Items` (
 -- Chapter
 CREATE TABLE `Chapter` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` text NOT NULL,
   `content` text NOT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -300,12 +301,154 @@ ALTER TABLE `Hero_XP_History`
 
 
 -- Example inserts for chapters
-INSERT INTO Chapter (id, content, image) VALUES
-(1, 'La Forêt Enchantée
+INSERT INTO Chapter (id, titre, content, image) VALUES
+(1, "Introduction",
 
-Vous vous trouvez dans une forêt sombre et enchantée. Deux chemins se présentent à vous.', 'images/forêt.jpg'),
-(2, 'Le Lac Mystérieux
+"Le ciel est lourd ce soir sur le village du Val Perdu, dissimulé entre les montagnes. La
+petite taverne, dernier refuge avant l'immense forêt, est étrangement calme quand le
+bourgmestre s’approche de vous. Homme d’apparence usée par les années et les soucis,
+il vous adresse un regard désespéré.
+« Ma fille… elle a disparu dans la forêt. Personne n’a osé la chercher… sauf vous, peut-
+être ? On raconte qu’un sorcier vit dans un château en ruines, caché au cœur des bois.
+Depuis des mois, des jeunes filles disparaissent… J'ai besoin de vous pour la retrouver. »
+Vous sentez le poids de la mission qui s’annonce, et un frisson parcourt votre échine.
+Bientôt, la forêt s'ouvre devant vous, sombre et menaçante. La quête commence.", 'images/forêt.jpg'),
+(2, "L'orée de la forêt","
 
-Vous arrivez à un lac aux eaux limpides. Une créature vous observe.', 'images/lac.jpg');
+Vous franchissez la lisière des arbres, la pénombre de la forêt avalant le sentier devant
+vous. Un vent froid glisse entre les troncs, et le bruissement des feuilles ressemble à un
+murmure menaçant. Deux chemins s’offrent à vous : l’un sinueux, bordé de vieux arbres
+noueux ; l’autre droit mais envahi par des ronces épaisses.", 'images/lac.jpg'),
+(3, "L'arbre aux corbeaux","
+
+Votre choix vous mène devant un vieux chêne aux branches tordues, grouillant de
+corbeaux noirs qui vous observent en silence. À vos pieds, des traces de pas légers,
+probablement récents, mènent plus loin dans les bois. Soudain, un bruit de pas feutrés
+se fait entendre. Vous ressentez la présence d’un prédateur.", 'images/lac.jpg'),
+(4, "Le sanglier enragé","
+
+En progressant, le calme de la forêt est soudain brisé par un grognement. Surgissant des
+buissons, un énorme sanglier, au pelage épais et aux yeux injectés de sang, se dirige vers
+vous. Sa rage est palpable, et il semble prêt à en découdre. Le voici qui décide
+brutalement de vous charger !", 'images/lac.jpg'),
+(5, "Rencontre avec le paysan","
+
+Tandis que vous progressez, une voix humaine s’élève, interrompant le silence de la forêt.
+Vous tombez sur un vieux paysan, accroupi près de champignons aux couleurs vives. Il
+sursaute en vous voyant, puis se détend, vous souriant tristement.
+« Vous devriez faire attention, étranger, murmure-t-il. La nuit, des cris terrifiants
+retentissent depuis le cœur de la forêt… Des créatures rôdent. »", 'images/lac.jpg'),
+(6, "Le loup noir","
+
+À mesure que vous avancez, un bruissement attire votre attention. Une silhouette sombre
+s’élance soudainement devant vous : un loup noir aux yeux perçants. Son poil est hérissé
+et sa gueule laisse entrevoir des crocs acérés. Vous sentez son regard fixé sur vous, prêt
+à bondir.
+Le combat est inévitable »", 'images/lac.jpg'),
+(7, "La clairière aux pierres anciennes","
+
+Après votre rencontre, vous atteignez une clairière étrange, entourée de pierres dressées,
+comme un ancien autel oublié par le temps. Une légère brume rampe au sol, et les
+ombres des pierres semblent danser sous la lueur de la lune.", 'images/lac.jpg'),
+(8, "Les murmures du ruisseau","
+
+Essoufflé mais déterminé, vous arrivez près d’un petit ruisseau qui serpente au milieu des
+arbres. Le chant de l’eau vous apaise quelque peu, mais des murmures étranges
+semblent émaner de la rive. Vous apercevez des inscriptions anciennes gravées dans une
+pierre moussue.", 'images/lac.jpg'),
+(9, "Au pied du château","
+
+La forêt se disperse enfin, et devant vous se dresse une colline escarpée. Au sommet, le
+château en ruines projette une ombre menaçante sous le clair de lune. Les murs effrités
+et les tours en partie effondrées ajoutent à la sinistre réputation du lieu.
+Vous sentez que la véritable aventure commence ici, et que l’influence du sorcier n’est
+peut-être pas qu’une légende…", 'images/lac.jpg'),
+(10, "La lumière au bout du néant","
+
+Le monde se dérobe sous vos pieds, et une obscurité profonde vous enveloppe, glaciale
+et insondable. Vous ne sentez plus le poids de votre équipement, ni la morsure de la
+douleur. Juste un vide infini, vous aspirant lentement dans les ténèbres.
+Alors que vous perdez toute notion du temps, une lueur douce apparaît au loin, vacillante
+comme une flamme fragile dans l’obscurité. Au fur et à mesure que vous approchez, vous
+entendez une voix, faible mais bienveillante, qui murmure des mots oubliés, anciens.
+« Brave âme, ton chemin n'est pas achevé... À ceux qui échouent, une seconde chance
+est accordée. Mais les caprices du destin exigent un sacrifice. »
+La lumière s'intensifie, et vous sentez vos forces revenir, mais vos poches sont vides, votre
+sac allégé de tout trésor. Votre équipement, vos armes, tout a disparu, laissant place à
+une sensation de vulnérabilité.
+Lorsque la lumière vous enveloppe, vous ouvrez de nouveau les yeux, retrouvant la terre
+ferme sous vos pieds. Vous êtes de retour, sans autre possession que votre volonté de
+reprendre cette quête. Mais cette fois-ci, peut-être, saurez-vous éviter les pièges fatals
+qui vous ont mené à votre perte.", 'images/lac.jpg'),
+(11, "La curiosité tua le chat","
+
+Qu’avez-vous fait, Malheureux !", 'images/lac.jpg')
+;
+
+INSERT INTO Links (id, chapter_id, next_chapter_id, description) VALUES
+(1,1,2,
+
+"Commencer la quête !"
+),
+(2,2,3,
+
+"Emprunter le chemin sinueux..."
+),
+(3,2,4,
+
+"Choisir le sentier couvert de ronces !!"
+),
+(4,3,5,
+
+"Rester prudent..."
+),
+(5,3,6,
+
+"Ignorer les bruits et de poursuivre sa route..."
+),
+(6,4,8,
+
+"Vaincre le sanglier !!"
+),
+(7,4,10,
+
+"Perdre contre le sanglier..."
+),
+(8,5,7,
+
+"Tendre l'oreille..."
+),
+(9,6,7,
+
+"Survivre au loup."
+),
+(10,6,10,
+
+"Le loup vous terrasse..."
+),
+(11,7,8,
+
+"Suivre le sentier couvert de mousse"
+),
+(12,7,9,
+
+"Suivre le chemin tortueux à travers les racines"
+),
+(13,8,11,
+
+"Toucher la pierre gravée..."
+),
+(14,8,9,
+
+"Ignorer et poursuivez votre route..."
+),
+(15,10,1,
+
+"Reprendre l’aventure depuis le début..."
+),
+(16,11,10,
+
+"Oh non !!"
+);
 
 COMMIT;

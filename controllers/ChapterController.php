@@ -14,17 +14,16 @@ class ChapterController
         global $bdd;
 
         try {
-            $stmt = $bdd->query("SELECT id, content, image FROM Chapter ORDER BY id ASC");
+            $stmt = $bdd->query("SELECT id, titre, content, image FROM Chapter ORDER BY id ASC");
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             foreach ($rows as $row) {
                 $id = (int) $row['id'];
-                $content = $row['content'];
+                $title = $row['titre'];
+                $description = $row['content'];
                 $image = $row['image'] ?? '';
 
                 // Adaptation : la table ne contient pas de title/choices => valeurs par défaut
-                $title = "Chapitre " . $id;
-                $description = $content;
                 $choices = []; // à gérer plus tard si stockés en base
 
                 $this->chapters[] = new Chapter($id, $title, $description, $image, $choices);

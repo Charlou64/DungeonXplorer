@@ -35,7 +35,7 @@ if (!isset($chapter)) {
             foreach ($choices as $choice) {
                 // Syntaxe PHP correcte et bonnes clés : 'next_chapter_id' et 'description'
                 echo '<li class="list-group-item">
-                        <a href="' . $_SESSION["basepath"] . '/chapter/' . $choice['next_chapter_id'] . '" class="btn btn-primary">
+                        <a href="' . $_SESSION["basepath"] . '/chapter/' . $choice['next_chapter_id'] . '" class="button">
                             ' . htmlspecialchars($choice['description']) . '
                         </a>
                     </li>';

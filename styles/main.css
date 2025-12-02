@@ -51,7 +51,7 @@ p, li, span {
 /* Boutons */
 .button, .btn {
     background-color: var(--accent-or);
-    color: var(--fond-principal);
+    color: var(--texte-principal);
     border: none;
     padding: 12px 24px;
     border-radius: 8px;

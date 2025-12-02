@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>-->
 
 <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-container ">
         <!--<img src="images/logo.png" class="logo_dungeon" alt="DungeonXplorer logo" id="logo" onclick="document.location.reload(false)">-->
             <a class="navbar-brand" href="<?php echo $_SESSION["basepath"]; ?>">
                 <h3 class="mb-0">DungeonXplorer</h3>

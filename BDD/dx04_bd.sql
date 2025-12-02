@@ -451,4 +451,12 @@ INSERT INTO Links (id, chapter_id, next_chapter_id, description) VALUES
 "Oh non !!"
 );
 
+insert into Monster (id, name, pv, mana, initiative, strength, attack, xp) values
+(1, 'Sanglier enragé', 30, NULL, 15, 5, 'Charge furieuse', 20),
+(2, 'Loup noir', 25, NULL, 20, 7, 'Morsure rapide', 25);
+
+insert into Encounter (id, chapter_id, monster_id) values
+(1,4,1),
+(2,6,2);
+
 COMMIT;

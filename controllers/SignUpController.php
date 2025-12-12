@@ -16,7 +16,7 @@ class SignUpController {
 
             if ($stmt->execute()) {
                 $_SESSION["username"] = $username;
-                header('Location: account');
+                header('Location: ' . $_SESSION["basepath"] . '/account');
                 exit;
             }
         }

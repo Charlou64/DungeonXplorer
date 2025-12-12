@@ -20,7 +20,7 @@ class SignInController {
                 // Vérification du mot de passe
                 if (password_verify($password, $user['password_hash'])) {
                     $_SESSION["username"] = $user["username"];
-                    header('Location: ../account');
+                    header('Location: ' . $_SESSION["basepath"] . '/account');
                     exit;
                 } else {
                     echo "Mot de passe incorrect.";

@@ -72,7 +72,7 @@ class Router
 }
 
 // Instantiation du routeur - using a more robust approach
-$basePath = '/dungeonxplorer/DungeonXplorer'; 
+$basePath = '/dungeonXplorer/DungeonXplorer'; 
 $currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $cleanUri = str_replace($basePath, '', $currentUri);
 

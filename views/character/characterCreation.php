@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creation de Personnage</title>
+    <link href="../styles/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="../scripts/creationperso.js" defer></script>
+</head>
+<body>
+    <form action="persoController.php" method="post">
+        <h1>Créez votre personnage !</h1>
+        <select class="classe" name="classes" id="class-select" required>
+            <option value="void">Choisissez une classe</option>
+            <option value="warrior">Guerrier</option>
+            <option value="rogue">Voleur</option>
+            <option value="mage">Magicien</option>
+        </select>
+        <div id="stats">
+            <label for="hp">Points de Vie : </label>
+            <div class="stat" id="hp">0</div>
+            <label for="init">Initiative : </label>
+            <div class="stat" id="init">0</div>
+            <label for="stren">Force : </label>
+            <div class="stat" id="stren">0</div>
+            <label for="mana">Mana : </label>
+            <div class="stat" id="mana">0</div>
+            <label for="hp">Équipement : </label>
+            <div class="stat" id="stuff">0</div>
+        </div>
+        <button id="reroll">
+            <i class="fas fa-dice-d20"></i> Relancer
+        </button>
+        <img id="icon" src="../images/rien.jpg">
+        <div id="desc">...</div>
+        <input type="submit" value="Créer Personnage" class="create">
+    </form>
+</select>
+</body>
+</html>

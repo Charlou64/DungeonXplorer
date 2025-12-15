@@ -87,6 +87,7 @@ $router->addRoute('account', 'AccountController@index');
 $router->addRoute('account/signIn', 'SignInController@index');
 $router->addRoute('account/signUp', 'SignUpController@index');
 $router->addRoute('logout', 'LogoutController@index');
+$router->addRoute('character', 'CharacterController@index');
 
 
 // debug purposes
@@ -97,4 +98,6 @@ echo "cleanUri: " . $cleanUri . "<br>";
 */
 
 // Appel de la méthode route
+require_once __DIR__.'/views/objects/header.php';
 $router->route(trim($cleanUri, '/'));
+require_once __DIR__.'/views/objects/footer.php';

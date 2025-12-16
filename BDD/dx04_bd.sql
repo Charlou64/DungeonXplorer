@@ -451,6 +451,7 @@ INSERT INTO Links (id, chapter_id, next_chapter_id, description) VALUES
 "Oh non !!"
 );
 
+/*MONSTER*/
 insert into Monster (id, name, pv, mana, initiative, strength, attack, xp) values
 (1, 'Sanglier enragé', 30, NULL, 15, 5, 'Charge furieuse', 20),
 (2, 'Loup noir', 25, NULL, 20, 7, 'Morsure rapide', 25);
@@ -458,5 +459,11 @@ insert into Monster (id, name, pv, mana, initiative, strength, attack, xp) value
 insert into Encounter (id, chapter_id, monster_id) values
 (1,4,1),
 (2,6,2);
+
+/*CLASS*/
+INSERT INTO `Class` (name,description,base_pv,base_mana,strength,initiative,max_items) VALUES
+('Guerrier','Combat rapproché, très résistant',150,0,18,6,12),
+('Voleur','Agile et rapide, forte initiative',100,10,12,14,10),
+('Magicien','Spécialiste de la magie offensive',80,30,8,10,8);
 
 COMMIT;

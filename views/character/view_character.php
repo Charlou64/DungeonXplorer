@@ -67,15 +67,11 @@ if (!isset($character) || !$character) {
                     <?php endif; ?>
 
                     <div class="mt-3 d-flex gap-2">
-                        <form action="<?php echo $_SESSION['basepath']; ?>/character/start" method="post" style="display:inline;">
-                            <input type="hidden" name="character_id" value="<?php echo (int)$character->getId(); ?>">
-                            <button type="submit" class="btn btn-success">Lancer l'aventure</button>
-                        </form>
-
-                        <form action="<?php echo $_SESSION['basepath']; ?>/character/resume" method="post" style="display:inline;">
-                            <input type="hidden" name="character_id" value="<?php echo (int)$character->getId(); ?>">
-                            <button type="submit" class="btn btn-primary">Reprendre l'aventure</button>
-                        </form>
+                        <a href="<?php echo $_SESSION['basepath']; ?>/chapter/1" class="btn btn-secondary">Commencer une nouvelle aventure</a>
+                        
+                        <?php if ($_SESSION['character']->getChapterId() > 1): ?>
+                            <a href="<?php echo $_SESSION['basepath']; ?>/chapter/<?php echo (int)$_SESSION['character']->getChapterId(); ?>" class="btn btn-secondary">Reprendre l'aventure</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

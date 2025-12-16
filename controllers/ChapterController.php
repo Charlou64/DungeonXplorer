@@ -54,10 +54,45 @@ class ChapterController
     {
         $chapter = $this->getChapter($id);
 
-        if ($chapter) {
+        // s'assurer que la classe Character est disponible (pour save())
+        require_once __DIR__ . '/../models/characterModel.php';
+
+        if ($chapter && isset($_SESSION['character']) && $_SESSION['character'] instanceof Character) {
+            global $bdd;
+
+            $hero = $_SESSION['character'];
+            $heroId = $hero->getId();
+
+            if ($heroId) {
+                try {
+                    // 1) Insérer une nouvelle ligne dans Hero_Progress pour ce chapitre (InProgress)
+                    $stmt = $bdd->prepare("
+                        INSERT INTO Hero_Progress (hero_id, chapter_id, status, completion_date, objective)
+                        VALUES (:hero_id, :chapter_id, :status, NULL, :objective)
+                    ");
+                    $stmt->execute([
+                        ':hero_id' => $heroId,
+                        ':chapter_id' => $id,
+                        ':status' => 'InProgress',
+                        ':objective' => null
+                    ]);
+
+                    // 2) Mettre à jour le hero.chapter_id et sauvegarder le Hero en base
+                    $hero->setChapterId($id);
+
+                    // mettre à jour l'objet en session au cas où save modifie l'objet (id, etc.)
+                    $_SESSION['character'] = $hero;
+                } catch (PDOException $e) {
+                    if (defined('DEBUG') && DEBUG) {
+                        error_log('Erreur insertion Hero_Progress : ' . $e->getMessage());
+                    }
+                    // on laisse la vue charger même si l'insertion a échoué
+                }
+            }
+
             include 'views/chapter.php'; // Charge la vue pour le chapitre
         } else {
-            // Si le chapitre n'existe pas, redirige vers un chapitre par défaut ou affiche une erreur
+            // Si le chapitre n'existe pas ou pas de personnage en session, affiche une erreur
             include 'views/404.php';
         }
     }

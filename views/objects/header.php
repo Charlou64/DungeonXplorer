@@ -27,7 +27,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="<?php echo $_SESSION["basepath"]; ?>">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?php echo $_SESSION["basepath"]; ?>/chapter/1">Chapitres</a></li>
                     <?php
                         if(isset($_SESSION["username"])){
                             echo '<li class="nav-item"><a class="nav-link" href="'.$_SESSION["basepath"].'/character">Personnages</a></li>';

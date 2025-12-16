@@ -51,25 +51,6 @@
                     <div class="col-md-6 d-flex flex-column align-items-start">
                         <label class="form-label">Aperçu</label>
 
-                        <style>
-                            /* agrandi et rendu responsive : carré maintenu via aspect-ratio */
-                            .avatar-frame {
-                                width:100%;
-                                max-width:450px; 
-                                aspect-ratio: 1 / 1;
-                                overflow:hidden;
-                                border-radius:10px;
-                                border:1px solid #e5e7eb;
-                                background:#fff;
-                            }
-                            .avatar-frame img {
-                                width:100%;
-                                height:100%;
-                                object-fit:cover;
-                                display:block;
-                            }
-                        </style>
-
                         <div class="avatar-frame mb-2">
                             <img id="avatar-preview" src="<?php echo $basePath; ?>/images/rien.jpg" alt="aperçu avatar">
                         </div>

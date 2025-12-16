@@ -6,19 +6,16 @@ class CharacterController {
     public function index() {
         global $bdd;
 
-        // assure que le modèle Character, Class et Item sont disponibles
-        require_once 'models/characterModel.php';
-        require_once 'models/classModel.php';
-        require_once 'models/ItemModel.php';
-
         if (!isset($_SESSION["username"])) {
             header('Location: ' . ($_SESSION['basepath'] ?? '') . '/account/signIn');
             exit;
         }
 
         // Récupération des infos des personnages + informations de la classe
+        // on récupère aussi le dernier Hero_Progress (si existant) pour obtenir chapter_id
         $sql = "
             SELECT h.*,
+                   hp.chapter_id AS chapter_id,
                    c.id AS class_id,
                    c.name AS class_name,
                    c.description AS class_description,
@@ -28,6 +25,15 @@ class CharacterController {
                    c.initiative AS class_initiative,
                    c.max_items AS class_max_items
             FROM Hero AS h
+            LEFT JOIN (
+                SELECT hp2.hero_id, hp2.chapter_id
+                FROM Hero_Progress hp2
+                JOIN (
+                    SELECT hero_id, MAX(id) AS mid
+                    FROM Hero_Progress
+                    GROUP BY hero_id
+                ) m ON hp2.hero_id = m.hero_id AND hp2.id = m.mid
+            ) hp ON hp.hero_id = h.id
             LEFT JOIN Class AS c ON h.class_id = c.id
             JOIN Users AS u ON h.compte_id = u.id
             WHERE u.username = :username
@@ -56,6 +62,11 @@ class CharacterController {
                 $character->setClass(ClassModel::fromRow($classData));
             } else {
                 $character->setClass(new ClassModel([]));
+            }
+
+            // attacher chapter_id si présent dans la row (déjà passé à fromRow mais on s'assure)
+            if (isset($row['chapter_id'])) {
+                $character->setChapterId($row['chapter_id']);
             }
 
             // charger équipements (Items) si présents
@@ -187,6 +198,7 @@ class CharacterController {
         // Récupération du personnage (vérifie que le personnage appartient bien à l'utilisateur)
         $sql = "
             SELECT h.*,
+                   hp.chapter_id AS chapter_id,
                    c.id AS class_id,
                    c.name AS class_name,
                    c.description AS class_description,
@@ -196,6 +208,15 @@ class CharacterController {
                    c.initiative AS class_initiative,
                    c.max_items AS class_max_items
             FROM Hero AS h
+            LEFT JOIN (
+                SELECT hp2.hero_id, hp2.chapter_id
+                FROM Hero_Progress hp2
+                JOIN (
+                    SELECT hero_id, MAX(id) AS mid
+                    FROM Hero_Progress
+                    GROUP BY hero_id
+                ) m ON hp2.hero_id = m.hero_id AND hp2.id = m.mid
+            ) hp ON hp.hero_id = h.id
             LEFT JOIN Class AS c ON h.class_id = c.id
             JOIN Users AS u ON h.compte_id = u.id
             WHERE u.username = :username
@@ -233,6 +254,13 @@ class CharacterController {
             $character->setClass(new ClassModel([]));
         }
 
+        // attacher chapitre courant si présent
+        if (isset($row['chapter_id'])) {
+            $character->setChapterId($row['chapter_id']);
+        } else {
+            $character->setChapterId(null);
+        }
+
         // attacher équipements (Items)
         $this->attachItemIfExists($character, 'armor_item_id', 'setArmorItem', $bdd);
         $this->attachItemIfExists($character, 'primary_weapon_item_id', 'setPrimaryWeaponItem', $bdd);
@@ -242,6 +270,8 @@ class CharacterController {
         // fournir la compatibilité vue (optionnel)
         $this->characters = [$character];
         $characters = $this->characters;
+
+        $_SESSION['character'] = $character;
 
         require_once 'views/character/view_character.php';
     }

@@ -3,10 +3,13 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-session_start();
-
 require_once 'models/autoload.php';
 require_once 'models/connexion.php';
+require_once 'models/characterModel.php';
+require_once 'models/classModel.php';
+require_once 'models/ItemModel.php';
+
+session_start();
 
 class Router
 {

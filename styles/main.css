@@ -209,3 +209,20 @@ footer h5 {
     color: var(--texte-secondaire);
     margin-bottom: 2rem;
 }
+
+/* Avatar / preview d'image pour la création de personnage */
+.avatar-frame {
+    width:100%;
+    max-width:450px; 
+    aspect-ratio: 1 / 1;
+    overflow:hidden;
+    border-radius:10px;
+    border:1px solid #e5e7eb;
+    background:#fff;
+}
+.avatar-frame img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}

@@ -28,6 +28,9 @@ class Character
     private $xp;
     private $current_level;
 
+    // nouveau : chapitre courant (id provenant de Hero_Progress)
+    private $chapter_id;
+
     public function __construct(array $data = [])
     {
         $this->id = $data['id'] ?? null;
@@ -52,6 +55,9 @@ class Character
         $this->spell_list = $this->decodeSpellList($data['spell_list'] ?? null);
         $this->xp = (int) ($data['xp'] ?? 0);
         $this->current_level = (int) ($data['current_level'] ?? 1);
+
+        // initialisation du chapitre courant si fourni dans $data
+        $this->chapter_id = isset($data['chapter_id']) ? (int)$data['chapter_id'] : null;
     }
 
     private function decodeSpellList($val)
@@ -142,6 +148,10 @@ class Character
     public function getClass() { return $this->class; }
     public function setClass($classObj) { $this->class = $classObj; }
 
+    // getters / setters pour chapter_id (compatibilité getChapter() utilisée dans la vue)
+    public function getChapterId() { return $this->chapter_id; }
+    public function setChapterId($v) { $this->chapter_id = $v === null ? null : (int)$v; }
+
     public function toArray()
     {
         return [
@@ -161,7 +171,8 @@ class Character
             'shield_item_id' => $this->shield_item_id,
             'spell_list' => $this->encodeSpellList(),
             'xp' => $this->xp,
-            'current_level' => $this->current_level
+            'current_level' => $this->current_level,
+            'chapter_id' => $this->chapter_id, // ajouté
         ];
     }
 

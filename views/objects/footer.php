@@ -8,11 +8,11 @@ JS Bootstrap + Popper
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center">
-                    <h5>DUCRET</h5>
+                    <h5>MULLOIS</h5>
                     <p>Matthéo</p>
                 </div>
                 <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center">
-                    <h5>PARIS-LEMPERIERRE</h5>
+                    <h5>PARIS LEMPERRIERE</h5>
                     <p>Victor</p>
                 </div>
                 <div class="col-12 col-md-3 d-flex flex-column justify-content-center align-items-center">

@@ -54,7 +54,6 @@
                         <div class="avatar-frame mb-2">
                             <img id="avatar-preview" src="<?php echo $basePath; ?>/images/rien.jpg" alt="aperçu avatar">
                         </div>
-                        <small class="text-muted">Sélectionnez une image dans la liste. Seules les images du dossier images/character sont autorisées.</small>
                     </div>
 
                     <script>

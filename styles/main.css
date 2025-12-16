@@ -134,6 +134,18 @@ a:hover {
     color: var(--texte-principal) !important; /* Texte blanc sur rouge */
 }
 
+/* Restaurer un vrai style pour .btn-danger */
+.btn-danger {
+    background-color: var(--accent-rouge) !important;
+    color: #fff !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.btn-danger:hover {
+    background-color: #6b1414 !important; /* teinte plus foncée au hover */
+}
+
 /* List Groups (Choix des chapitres) */
 .list-group-item {
     background-color: transparent;
@@ -210,19 +222,54 @@ footer h5 {
     margin-bottom: 2rem;
 }
 
-/* Avatar / preview d'image pour la création de personnage */
+/* Character view enhancements */
+.character-card .card-body {
+    padding: 1.25rem;
+}
+.character-header {
+    display:flex;
+    align-items:flex-start;
+    gap:1rem;
+}
+.character-meta h2 {
+    margin:0 0 .25rem 0;
+    font-weight:700;
+}
+.character-meta .muted {
+    color: #6c757d;
+    margin-bottom: .5rem;
+}
 .avatar-frame {
-    width:100%;
-    max-width:450px; 
-    aspect-ratio: 1 / 1;
-    overflow:hidden;
-    border-radius:10px;
-    border:1px solid #e5e7eb;
-    background:#fff;
+    width: 160px;
+    height: 160px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
 }
-.avatar-frame img {
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
+.avatar-frame img { width:100%; height:100%; object-fit:cover; display:block; }
+
+/* stats and equipment lists */
+.stats-list, .equip-list {
+    list-style:none;
+    padding:0;
+    margin:0 0 0.75rem 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem 1rem;
 }
+.stats-list li, .equip-list li {
+    background: #f8f9fa;
+    padding: .4rem .6rem;
+    border-radius:6px;
+    font-size:.95rem;
+    color:#212529;
+}
+
+/* actions */
+.character-actions { margin-top: .75rem; display:flex; align-items:center; gap:.5rem; }
+.character-actions .ms-auto { margin-left:auto; }
+.character-actions .btn { min-width:140px; }
+
+/* ensure danger button visible if overridden */
+.btn-danger { background-color: #dc3545 !important; color: #fff !important; border: none !important; }

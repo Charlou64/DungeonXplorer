@@ -90,10 +90,10 @@ $router->addRoute('account', 'AccountController@index');
 $router->addRoute('account/signIn', 'SignInController@index');
 $router->addRoute('account/signUp', 'SignUpController@index');
 $router->addRoute('logout', 'LogoutController@index');
+
 $router->addRoute('character', 'CharacterController@index');
 $router->addRoute('character/create', 'CharacterController@create');
 $router->addRoute('character/{id}', 'CharacterController@show');
-
 
 // debug purposes
 /*

@@ -15,6 +15,8 @@
                                 <input type="password" id="password" name="password" class="form-control" required>
                             </div>
                             <button type="submit" class="btn w-100">Se connecter</button>
+
+                            <a href="<?php echo $_SESSION['basepath']; ?>/account/signUp">Vous n'avez pas de compte ? S'inscrire</a>
                         </form>
                     </div>
                 </div>

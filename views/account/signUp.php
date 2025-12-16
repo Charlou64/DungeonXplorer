@@ -19,6 +19,8 @@
                                 <input type="password" id="password" name="password" class="form-control" required>
                             </div>
                             <button type="submit" class="couleur-bouton w-100">S'inscrire</button>
+
+                            <a href="<?php echo $_SESSION['basepath']; ?>/account/signIn">Vous avez déjà un compte ? Se connecter</a>
                         </form>
                     </div>
                 </div>

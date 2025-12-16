@@ -195,6 +195,61 @@ class CharacterController {
             exit;
         }
 
+        // Handle POST delete action
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['_action']) && $_POST['_action'] === 'delete') {
+            try {
+                // Vérifier que le personnage existe et appartient à l'utilisateur
+                $stmt = $bdd->prepare("SELECT h.id, h.compte_id FROM Hero h JOIN Users u ON h.compte_id = u.id WHERE h.id = :id AND u.username = :username LIMIT 1");
+                $stmt->execute([':id' => $id, ':username' => $_SESSION['username']]);
+                $heroRow = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                if ($heroRow) {
+                    $bdd->beginTransaction();
+
+                    // Supprimer explicitement les enregistrements liés au héros dans les tables dépendantes.
+                    // Même si les FK sont en cascade, on fait des suppressions explicites pour être sûr.
+                    $linkedTables = [
+                        'Inventory' => 'hero_id',
+                        'Hero_Spells' => 'hero_id',
+                        'Quests' => 'hero_id',
+                        'Hero_XP_History' => 'hero_id',
+                        'Hero_Progress' => 'hero_id'
+                    ];
+
+                    foreach ($linkedTables as $table => $col) {
+                        $del = $bdd->prepare("DELETE FROM `{$table}` WHERE `{$col}` = :id");
+                        $del->execute([':id' => $id]);
+                    }
+
+                    // Supprimer d'éventuelles autres tables métiers liées (ajouter ici si besoin)
+                    // Exemples : Inventory, Hero_Spells, Quests, Hero_XP_History (déjà listés)
+
+                    // Enfin supprimer l'enregistrement Hero
+                    $delH = $bdd->prepare("DELETE FROM `Hero` WHERE id = :id");
+                    $delH->execute([':id' => $id]);
+
+                    $bdd->commit();
+
+                    // si l'objet en session est celui supprimé, le retirer
+                    if (isset($_SESSION['character']) && $_SESSION['character'] instanceof Character && $_SESSION['character']->getId() == $id) {
+                        unset($_SESSION['character']);
+                    }
+
+                    header('Location: ' . $_SESSION['basepath'] . '/character');
+                    exit;
+                } else {
+                    // pas trouvé / pas propriétaire -> rediriger vers la liste
+                    header('Location: ' . $_SESSION['basepath'] . '/character');
+                    exit;
+                }
+            } catch (PDOException $e) {
+                if ($bdd->inTransaction()) $bdd->rollBack();
+                // en prod tu peux logger l'erreur, ici on redirige proprement
+                header('Location: ' . ($_SESSION['basepath'] ?? '') . '/character');
+                exit;
+            }
+        }
+
         // Récupération du personnage (vérifie que le personnage appartient bien à l'utilisateur)
         $sql = "
             SELECT h.*,

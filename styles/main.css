@@ -209,3 +209,46 @@ footer h5 {
     color: var(--texte-secondaire);
     margin-bottom: 2rem;
 }
+
+/* Specific chapter view styles */
+.chapter-description {
+    position: absolute;
+    bottom: 50%;
+    left: 50px;
+    right: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 30px;
+    line-height: 1.5;
+    /* inherit font and color from global styles */
+    color: inherit;
+    font-size: inherit;
+}
+
+.choices-wrap {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+}
+
+.choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* spacing between choices */
+    margin: 0;
+}
+
+.choice-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px 15px;
+    border-radius: 12px;
+}
+
+/* Ensure .btn appearance applies inside chapter view (if needed override) */
+.choices-container .btn {
+    font-family: 'Pirata One', cursive;
+    font-size: 1rem;
+}

@@ -14,7 +14,7 @@
                         <div class="mb-3">
                             <p class=" font-text"><strong>Membre depuis :</strong> <?php echo htmlspecialchars($user["created_at"]); ?></p>
                         </div>
-                        <form action="<?php echo $_SESSION["basepath"]; ?>/logout" method="post">
+                        <form action="<?php echo $_SESSION["basepath"]; ?>/account/logout" method="post">
                             <button type="submit" class="couleur-bouton w-100">Se déconnecter</button>
                         </form>
                     </div>

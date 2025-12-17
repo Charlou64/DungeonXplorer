@@ -75,7 +75,7 @@ class Router
 }
 
 // Instantiation du routeur - using a more robust approach
-$basePath = '/dungeonXplorer/DungeonXplorer/'; 
+$basePath = '/dungeonXplorer/DungeonXplorer'; 
 $currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $cleanUri = str_replace($basePath, '', $currentUri);
 
@@ -86,10 +86,11 @@ $router = new Router();
 // Ajout des routes
 $router->addRoute('', 'HomeController@index');
 $router->addRoute('chapter/{id}', 'ChapterController@show');
+
 $router->addRoute('account', 'AccountController@index');
-$router->addRoute('account/signIn', 'SignInController@index');
-$router->addRoute('account/signUp', 'SignUpController@index');
-$router->addRoute('logout', 'LogoutController@index');
+$router->addRoute('account/signIn', 'AccountController@signIn');
+$router->addRoute('account/signUp', 'AccountController@signUp');
+$router->addRoute('account/logout', 'AccountController@logout');
 
 $router->addRoute('character', 'CharacterController@index');
 $router->addRoute('character/create', 'CharacterController@create');

@@ -40,7 +40,9 @@ class ChapterController
 
                 $choices = $linksByChapter[$id] ?? []; // Récupération des choix
 
-                $this->chapters[] = new Chapter($id, $title, $description, $image, $choices);
+                $chapter = new Chapter($id, $title, $description, $image, $choices);
+                $chapter->loadMonsters($bdd);
+                $this->chapters[] = $chapter;
             }
         } catch (PDOException $e) {
             if (defined('DEBUG') && DEBUG) {
@@ -52,49 +54,55 @@ class ChapterController
 
     public function show($id)
     {
+        global $bdd;
+
+        // charger le modèle Chapter
+        require_once __DIR__ . '/../models/chapterModel.php';
+        require_once __DIR__ . '/../models/fight/MonsterModel.php';
+
         $chapter = $this->getChapter($id);
-
-        // s'assurer que la classe Character est disponible (pour save())
-        require_once __DIR__ . '/../models/characterModel.php';
-
-        if ($chapter && isset($_SESSION['character']) && $_SESSION['character'] instanceof Character) {
-            global $bdd;
-
-            $hero = $_SESSION['character'];
-            $heroId = $hero->getId();
-
-            if ($heroId) {
-                try {
-                    // 1) Insérer une nouvelle ligne dans Hero_Progress pour ce chapitre (InProgress)
-                    $stmt = $bdd->prepare("
-                        INSERT INTO Hero_Progress (hero_id, chapter_id, status, completion_date, objective)
-                        VALUES (:hero_id, :chapter_id, :status, NULL, :objective)
-                    ");
-                    $stmt->execute([
-                        ':hero_id' => $heroId,
-                        ':chapter_id' => $id,
-                        ':status' => 'InProgress',
-                        ':objective' => null
-                    ]);
-
-                    // 2) Mettre à jour le hero.chapter_id et sauvegarder le Hero en base
-                    $hero->setChapterId($id);
-
-                    // mettre à jour l'objet en session au cas où save modifie l'objet (id, etc.)
-                    $_SESSION['character'] = $hero;
-                } catch (PDOException $e) {
-                    if (defined('DEBUG') && DEBUG) {
-                        error_log('Erreur insertion Hero_Progress : ' . $e->getMessage());
-                    }
-                    // on laisse la vue charger même si l'insertion a échoué
-                }
-            }
-
-            include 'views/chapter.php'; // Charge la vue pour le chapitre
-        } else {
-            // Si le chapitre n'existe pas ou pas de personnage en session, affiche une erreur
-            include 'views/404.php';
+        if (!$chapter) {
+            header('Location: '.$_SESSION['basepath'].'/404');
+            echo "Chapitre non trouvé";
+            return;
         }
+
+        // charger les monstres depuis la BDD si besoin
+        try {
+            $chapter->loadMonsters($bdd);
+        } catch (Exception $e) {
+            // ignore ou log
+            if (defined('DEBUG') && DEBUG) error_log($e->getMessage());
+        }
+
+        $character = $_SESSION['character'];
+
+        if (isset($character)) {
+            try {
+                // 1) Insérer une nouvelle ligne dans Hero_Progress pour ce chapitre (InProgress)
+                $stmt = $bdd->prepare("
+                    INSERT INTO Hero_Progress (hero_id, chapter_id, status, completion_date, objective)
+                    VALUES (:hero_id, :chapter_id, :status, NULL, :objective)
+                ");
+                $stmt->execute([
+                    ':hero_id' => $character->getId(),
+                    ':chapter_id' => $id,
+                    ':status' => 'InProgress',
+                    ':objective' => null
+                ]);
+
+                // 2) Mettre à jour le hero.chapter_id et sauvegarder le Hero en base
+                $character->setChapterId($id);
+            } catch (PDOException $e) {
+                if (defined('DEBUG') && DEBUG) {
+                    error_log('Erreur insertion Hero_Progress : ' . $e->getMessage());
+                }
+                // on laisse la vue charger même si l'insertion a échoué
+            }
+        }
+
+        // inclure la vue (la vue gère affichage combat si monsters non vide)
+        require_once __DIR__ . '/../views/chapter.php';
     }
 
     public function getChapter($id)

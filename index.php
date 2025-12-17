@@ -8,6 +8,7 @@ require_once 'models/connexion.php';
 require_once 'models/characterModel.php';
 require_once 'models/classModel.php';
 require_once 'models/ItemModel.php';
+require_once 'models/fight/MonsterModel.php';
 
 session_start();
 

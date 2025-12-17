@@ -312,57 +312,57 @@ il vous adresse un regard désespéré.
 être ? On raconte qu’un sorcier vit dans un château en ruines, caché au cœur des bois.
 Depuis des mois, des jeunes filles disparaissent… J'ai besoin de vous pour la retrouver. »
 Vous sentez le poids de la mission qui s’annonce, et un frisson parcourt votre échine.
-Bientôt, la forêt s'ouvre devant vous, sombre et menaçante. La quête commence.", 'images/forêt.jpg'),
+Bientôt, la forêt s'ouvre devant vous, sombre et menaçante. La quête commence.", '../images/chapter/scene-fantastique-en-3d.jpg'),
 (2, "L'orée de la forêt","
 
 Vous franchissez la lisière des arbres, la pénombre de la forêt avalant le sentier devant
 vous. Un vent froid glisse entre les troncs, et le bruissement des feuilles ressemble à un
 murmure menaçant. Deux chemins s’offrent à vous : l’un sinueux, bordé de vieux arbres
-noueux ; l’autre droit mais envahi par des ronces épaisses.", 'images/lac.jpg'),
+noueux ; l’autre droit mais envahi par des ronces épaisses.", '../images/chapter/ronce_foret.png'),
 (3, "L'arbre aux corbeaux","
 
 Votre choix vous mène devant un vieux chêne aux branches tordues, grouillant de
 corbeaux noirs qui vous observent en silence. À vos pieds, des traces de pas légers,
 probablement récents, mènent plus loin dans les bois. Soudain, un bruit de pas feutrés
-se fait entendre. Vous ressentez la présence d’un prédateur.", 'images/lac.jpg'),
+se fait entendre. Vous ressentez la présence d’un prédateur.", '../images/chapter/arbre_corbeaux.png'),
 (4, "Le sanglier enragé","
 
 En progressant, le calme de la forêt est soudain brisé par un grognement. Surgissant des
 buissons, un énorme sanglier, au pelage épais et aux yeux injectés de sang, se dirige vers
 vous. Sa rage est palpable, et il semble prêt à en découdre. Le voici qui décide
-brutalement de vous charger !", 'images/lac.jpg'),
+brutalement de vous charger !", '../images/chapter/sanglier_combat.png'),
 (5, "Rencontre avec le paysan","
 
 Tandis que vous progressez, une voix humaine s’élève, interrompant le silence de la forêt.
 Vous tombez sur un vieux paysan, accroupi près de champignons aux couleurs vives. Il
 sursaute en vous voyant, puis se détend, vous souriant tristement.
 « Vous devriez faire attention, étranger, murmure-t-il. La nuit, des cris terrifiants
-retentissent depuis le cœur de la forêt… Des créatures rôdent. »", 'images/lac.jpg'),
+retentissent depuis le cœur de la forêt… Des créatures rôdent. »", '../images/chapter/rencontre_paysan.png'),
 (6, "Le loup noir","
 
 À mesure que vous avancez, un bruissement attire votre attention. Une silhouette sombre
 s’élance soudainement devant vous : un loup noir aux yeux perçants. Son poil est hérissé
 et sa gueule laisse entrevoir des crocs acérés. Vous sentez son regard fixé sur vous, prêt
 à bondir.
-Le combat est inévitable »", 'images/lac.jpg'),
+Le combat est inévitable »", '../images/chapter/loup_noir_combat.png'),
 (7, "La clairière aux pierres anciennes","
 
 Après votre rencontre, vous atteignez une clairière étrange, entourée de pierres dressées,
 comme un ancien autel oublié par le temps. Une légère brume rampe au sol, et les
-ombres des pierres semblent danser sous la lueur de la lune.", 'images/lac.jpg'),
+ombres des pierres semblent danser sous la lueur de la lune.", '../images/chapter/clairiere_pierre_ancienne.png'),
 (8, "Les murmures du ruisseau","
 
 Essoufflé mais déterminé, vous arrivez près d’un petit ruisseau qui serpente au milieu des
 arbres. Le chant de l’eau vous apaise quelque peu, mais des murmures étranges
 semblent émaner de la rive. Vous apercevez des inscriptions anciennes gravées dans une
-pierre moussue.", 'images/lac.jpg'),
+pierre moussue.", '../images/chapter/ruisseau.png'),
 (9, "Au pied du château","
 
 La forêt se disperse enfin, et devant vous se dresse une colline escarpée. Au sommet, le
 château en ruines projette une ombre menaçante sous le clair de lune. Les murs effrités
 et les tours en partie effondrées ajoutent à la sinistre réputation du lieu.
 Vous sentez que la véritable aventure commence ici, et que l’influence du sorcier n’est
-peut-être pas qu’une légende…", 'images/lac.jpg'),
+peut-être pas qu’une légende…", '../images/chapter/pied_chateau.png'),
 (10, "La lumière au bout du néant","
 
 Le monde se dérobe sous vos pieds, et une obscurité profonde vous enveloppe, glaciale
@@ -379,10 +379,10 @@ une sensation de vulnérabilité.
 Lorsque la lumière vous enveloppe, vous ouvrez de nouveau les yeux, retrouvant la terre
 ferme sous vos pieds. Vous êtes de retour, sans autre possession que votre volonté de
 reprendre cette quête. Mais cette fois-ci, peut-être, saurez-vous éviter les pièges fatals
-qui vous ont mené à votre perte.", 'images/lac.jpg'),
+qui vous ont mené à votre perte.", '../images/chapter/lumiere_bout_neant.png'),
 (11, "La curiosité tua le chat","
 
-Qu’avez-vous fait, Malheureux !", 'images/lac.jpg')
+Qu’avez-vous fait, Malheureux !", '../images/chapter/game_over.png')
 ;
 
 INSERT INTO Links (id, chapter_id, next_chapter_id, description) VALUES

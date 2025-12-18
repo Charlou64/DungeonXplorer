@@ -12,10 +12,11 @@ $monsters = $chapter->getMonsters();
                 </div>
             </div>
 
-            <div class="mt-3 p-3" style="background:rgba(255,255,255,0.9);border-radius:12px;">
-                <p style="font-size:1.05rem;line-height:1.4;"><?php echo nl2br(htmlspecialchars($chapter->getDescription())); ?></p>
+            <div style="background:rgba(255,255,255,0.9); border-radius:12px; margin: 16px 0; padding: 20px; width: 100%; box-sizing: border-box;">
+                <p style="color: black; font-size: 1.05rem; text-align: center; margin: 0;">
+                    <?php echo nl2br(htmlspecialchars(trim($chapter->getDescription()))); ?>
+                </p>
             </div>
-
             <!-- choix : désactivés pendant le combat -->
             <?php
                 // on prépare les hrefs pour la logique JS (1er = victoire, 2e = défaite)

@@ -60,7 +60,7 @@ Inspiré des livres cultes des années 80-90, ce projet est porté par l’assoc
 ## 🛠️ Installation
 
 ### Prérequis
-- PHP ≥ 8.x
+- PHP
 - MySQL / MariaDB
 - Serveur local (XAMPP, WAMP, MAMP…)
 - Composer (optionnel)
@@ -70,3 +70,7 @@ Inspiré des livres cultes des années 80-90, ce projet est porté par l’assoc
 1. Cloner le dépôt :
    ```bash
    git clone https://github.com/Charlou64/DungeonXplorer
+
+2. Executer le script de BDD
+
+3. potentiellement modifier le fichier **models/connexion.php** pour adapter a votre BDD

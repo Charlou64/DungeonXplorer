@@ -37,19 +37,19 @@ $monsters = $chapter->getMonsters();
 
         <div class="col-lg-4">
             <?php if (!empty($monsters)): ?>
-                <div class="card p-2" id="combat-panel" data-chapter-id="<?php echo (int)$chapter->getId(); ?>">
+                <div class="card p-2" id="combat-panel" style="margin-bottom : 20px;" data-chapter-id="<?php echo (int)$chapter->getId(); ?>">
                     <div class="card-body"
                          data-victory-href="<?php echo htmlspecialchars($victoryHref, ENT_QUOTES, 'UTF-8'); ?>"
                          data-defeat-href="<?php echo htmlspecialchars($defeatHref, ENT_QUOTES, 'UTF-8'); ?>">
                          <h5 class="card-title">Combat</h5>
 
                         <!-- joueur -->
-                        <div id="player-card" class="mb-3 p-2" style="border-radius:8px;background:#f8f9fa;">
+                        <div id="player-card" class="mb-3 p-2" style="border-radius:8px;background:#f8f9fa;color:black;">
                             <?php if ($character): ?>
                                 <div><strong><?php echo htmlspecialchars($character->getName()); ?></strong> (Niv <?php echo (int)$character->getCurrentLevel(); ?>)</div>
-                                <div>PV: <span id="player-hp"><?php echo (int)$character->getPv(); ?></span> / <?php echo (int)$character->getPv(); ?></div>
-                                <div>Mana: <span id="player-mana"><?php echo (int)$character->getMana(); ?></span> / <?php echo (int)$character->getMana(); ?></div>
-                                <div>Force: <span id="player-str"><?php echo (int)$character->getStrength(); ?></span></div>
+                                <div>PV: <span id="player-hp" style="color:black;"><?php echo (int)$character->getPv(); ?></span> / <?php echo (int)$character->getPv(); ?></div>
+                                <div>Mana: <span id="player-mana" style="color:black;"><?php echo (int)$character->getMana(); ?></span> / <?php echo (int)$character->getMana(); ?></div>
+                                <div>Force: <span id="player-str" style="color:black;"><?php echo (int)$character->getStrength(); ?></span></div>
                                 <input type="hidden" id="player-id" value="<?php echo (int)$character->getId(); ?>">
                             <?php else: ?>
                                 <div class="text-danger">Aucun personnage sélectionné. Utilisez "Continuer l'aventure" depuis la liste pour choisir un personnage.</div>
@@ -57,7 +57,7 @@ $monsters = $chapter->getMonsters();
                         </div>
 
                         <!-- monstres -->
-                        <div id="monsters-list" class="mb-2">
+                        <div id="monsters-list" class="mb-2" style="color:black;">
                             <?php foreach ($monsters as $i => $m): ?>
                                 <div class="mb-2 p-2 monster-row" data-index="<?php echo $i; ?>"
                                      data-id="<?php echo (int)$m->getId(); ?>"
@@ -70,7 +70,7 @@ $monsters = $chapter->getMonsters();
                                         <strong><?php echo htmlspecialchars($m->getName()); ?></strong>
                                         <small>Init: <?php echo (int)$m->getInitiative(); ?></small>
                                     </div>
-                                    <div class="mt-1">PV: <span class="monster-hp"><?php echo (int)$m->getPv(); ?></span> / <?php echo (int)$m->getPv(); ?></div>
+                                    <div class="mt-1">PV: <span class="monster-hp" style="color:black;"><?php echo (int)$m->getPv(); ?></span> / <?php echo (int)$m->getPv(); ?></div>
                                 </div>
                             <?php endforeach; ?>
                         </div>

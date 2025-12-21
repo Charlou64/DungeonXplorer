@@ -101,9 +101,13 @@ $router->addRoute('character/create', 'CharacterController@create');
 $router->addRoute('character/{id}', 'CharacterController@show');
 
 $router->addRoute('admin', 'AdminController@index');
+$router->addRoute('admin/chapters', 'AdminController@chapters');
+$router->addRoute('admin/monsters', 'AdminController@monsters');
 $router->addRoute('admin/createChapter', 'AdminController@createChapter');
 $router->addRoute('admin/deleteChapter/{id}', 'AdminController@deleteChapter');
 $router->addRoute('admin/addLink', 'AdminController@addLink');
+$router->addRoute('admin/createMonster', 'AdminController@createMonster');
+$router->addRoute('admin/linkMonster', 'AdminController@linkMonster');
 
 
 // debug purposes

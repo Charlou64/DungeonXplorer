@@ -12,6 +12,17 @@ Inspiré des livres cultes des années 80-90, ce projet est porté par l’assoc
 
 ---
 
+### 🔐 Connexion administrateur
+
+Un compte administrateur est disponible par défaut pour gérer l’application :
+
+- **Identifiant** : `admin`  
+- **Mot de passe** : `admin`
+
+Rendez-vous sur la page de connexion, puis saisissez ces identifiants pour accéder à l’espace d’administration.
+
+---
+
 ## ⚙️ Socle technique
 
 - **Langages** : PHP, JavaScript, HTML, CSS  
@@ -43,17 +54,12 @@ Inspiré des livres cultes des années 80-90, ce projet est porté par l’assoc
 - Créer un personnage (Guerrier, Voleur, Magicien)
 - Démarrer ou reprendre une aventure
 - Consulter son profil
+- Supprimer son compte
 
----
-
-## 🛡️ Administrateur (Prévu mais non réalisé)
-- Accéder aux fonctionnalités joueur
-- Gérer les comptes utilisateurs
+### 🛡️ Administrateur
 - Ajouter / modifier / supprimer :
   - Chapitres
   - Monstres
-  - Trésors
-  - Images
 
 ---
 

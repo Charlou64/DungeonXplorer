@@ -94,6 +94,7 @@ $router->addRoute('account', 'AccountController@index');
 $router->addRoute('account/signIn', 'AccountController@signIn');
 $router->addRoute('account/signUp', 'AccountController@signUp');
 $router->addRoute('account/logout', 'AccountController@logout');
+$router->addRoute('account/deleteAccount', 'AccountController@deleteAccount');
 
 $router->addRoute('character', 'CharacterController@index');
 $router->addRoute('character/create', 'CharacterController@create');

@@ -100,6 +100,12 @@ $router->addRoute('character', 'CharacterController@index');
 $router->addRoute('character/create', 'CharacterController@create');
 $router->addRoute('character/{id}', 'CharacterController@show');
 
+$router->addRoute('admin', 'AdminController@index');
+$router->addRoute('admin/createChapter', 'AdminController@createChapter');
+$router->addRoute('admin/deleteChapter/{id}', 'AdminController@deleteChapter');
+$router->addRoute('admin/addLink', 'AdminController@addLink');
+
+
 // debug purposes
 /*
 echo "REQUEST_URI: " . $_SERVER['REQUEST_URI'] . "<br>";

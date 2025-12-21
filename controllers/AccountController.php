@@ -4,7 +4,7 @@ class AccountController {
         global $bdd;
         if (isset($_SESSION["username"])) {
             // Récupération des infos utilisateur
-            $stmt = $bdd->prepare("SELECT username, email, created_at FROM Users WHERE username = :username");
+            $stmt = $bdd->prepare("SELECT username, email, created_at, is_admin FROM Users WHERE username = :username");
             $stmt->execute([':username' => $_SESSION["username"]]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             require_once 'views/account/account.php';
@@ -37,6 +37,7 @@ class AccountController {
                 // Vérification du mot de passe
                 if (password_verify($password, $user['password_hash'])) {
                     $_SESSION["username"] = $user["username"];
+                    $_SESSION["is_admin"] = $user["is_admin"];
                     header('Location: ' . $_SESSION["basepath"] . '/account');
                     exit;
                 } else {
@@ -76,6 +77,7 @@ class AccountController {
 
                 if ($stmt->execute()) {
                     $_SESSION["username"] = $username;
+                    $_SESSION["is_admin"] = $user["is_admin"];
                     header('Location: ' . $_SESSION["basepath"] . '/account');
                     exit;
                 }
@@ -123,6 +125,7 @@ class AccountController {
 
                 // 3. Nettoyage session et redirection
                 unset($_SESSION['username']);
+                unset($_SESSION['is_admin']);
                 header('Location: ' . $_SESSION["basepath"]);
                 exit;
             }

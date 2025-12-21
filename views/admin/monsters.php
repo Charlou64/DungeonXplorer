@@ -50,6 +50,7 @@
                         <th>Nom</th>
                         <th>PV</th>
                         <th>Force</th>
+                        <th>Initiative</th>
                         <th>XP</th>
                     </tr>
                 </thead>
@@ -59,6 +60,7 @@
                         <td><?= htmlspecialchars($m['name']) ?></td>
                         <td><?= $m['pv'] ?></td>
                         <td><?= $m['strength'] ?></td>
+                        <td><?= $m['initiative'] ?></td>
                         <td><?= $m['xp'] ?></td>
                     </tr>
                     <?php endforeach; ?>

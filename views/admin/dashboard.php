@@ -21,5 +21,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card bg-dark border-warning h-100 text-center">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="card-title text-warning">👥 Utilisateurs</h3>
+                    <p class="card-text flex-grow-1">
+                        Créez des comptes et gérez les rôles administrateur.
+                    </p>
+                    <a href="<?= $_SESSION["basepath"] ?>/admin/users" class="btn btn-warning mt-3">
+                        Gérer les utilisateurs
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </main>

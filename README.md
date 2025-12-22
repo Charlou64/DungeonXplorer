@@ -57,9 +57,10 @@ Rendez-vous sur la page de connexion, puis saisissez ces identifiants pour accé
 - Supprimer son compte
 
 ### 🛡️ Administrateur
-- Ajouter / modifier / supprimer :
+- Ajouter / supprimer :
   - Chapitres
   - Monstres
+  - Utilisateurs
 
 ---
 

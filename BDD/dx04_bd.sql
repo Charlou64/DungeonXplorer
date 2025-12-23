@@ -382,8 +382,54 @@ reprendre cette quête. Mais cette fois-ci, peut-être, saurez-vous éviter les 
 qui vous ont mené à votre perte.", '../images/chapter/lumiere_bout_neant.png'),
 (11, "La curiosité tua le chat","
 
-Qu’avez-vous fait, Malheureux !", '../images/chapter/game_over.png')
-;
+Qu’avez-vous fait, Malheureux !", '../images/chapter/game_over.png'),
+(12, "Le Hall des Ombres",
+"Vous poussez les lourdes portes en chêne qui gémissent sinistrement. Une odeur de poussière et de cire fondue vous prend à la gorge. Le hall d'entrée est immense, éclairé par des torches aux flammes bleues. Deux voies s'offrent à vous : un grand escalier montant vers les étages supérieurs, ou une porte dérobée descendant vers les sous-sols humides.",
+'../images/chapter/castle_hall.jpg'),
+
+(13, "Les Geôles Oubliées",
+"Vous descendez dans les entrailles du château. L'air est glacial. Des cellules vides bordent le couloir, mais au fond, une ombre se dresse. C'est une armure animée, gardienne des lieux, qui rouille dans l'attente d'un intrus. Elle lève sa lourde épée en vous voyant !",
+'../images/chapter/dungeon_armor.jpg'),
+
+(14, "La Galerie des Glaces",
+"En haut de l'escalier, vous traversez une galerie remplie de miroirs anciens. Votre reflet semble bouger avec un léger décalage. Soudain, les miroirs explosent et une créature spectrale en sort. C'est une illusion gardienne !",
+'../images/chapter/mirror_hall.jpg'),
+
+(15, "Le Laboratoire d'Alchimie",
+"Après avoir survécu à la garde, vous arrivez dans une pièce remplie de fioles bouillonnantes et de livres interdits. Sur une table, une potion rougeoyante semble intacte au milieu du chaos. Au fond, une porte mène vers la plus haute tour.",
+'../images/chapter/alchemy_lab.jpg'),
+
+(16, "La Tour du Sorcier",
+"Vous grimpez les dernières marches en colimaçon. Le vent hurle à l'extérieur. Vous débouchez au sommet, sous le ciel étoilé. Le Sorcier est là, dos à vous, incantant devant un autel où la jeune fille est endormie. Il se retourne, ses yeux brillant de malice. Le combat final commence !",
+'../images/chapter/wizard_tower.jpg'),
+
+(17, "Le Triomphe du Héros",
+"Le sorcier s'effondre dans un nuage de fumée noire. Le charme est rompu. La jeune fille s'éveille, désorientée mais vivante. Le soleil commence à se lever sur le Val Perdu. Vous avez réussi là où tant d'autres ont échoué. Le retour au village sera glorieux.",
+'../images/chapter/victory_sunrise.jpg'),
+
+(18, "Un Piège Mortel",
+"Vous tentez de manipuler les fioles sans connaissances alchimiques. Une vapeur verte s'échappe soudainement d'un mélange instable. Vos poumons brûlent, votre vision se trouble... C'était une erreur fatale.",
+'../images/chapter/poison_trap.jpg'),
+
+(19, "Le Passage Secret",
+"En inspectant les murs humides des geôles, vous remarquez une pierre descellée. En appuyant dessus, un pan de mur pivote dans un grincement millénaire. Un courant d'air vicié, chargé d'odeurs de terre et d'encens, vous saute au visage. C'est un escalier en colimaçon qui s'enfonce bien plus bas que les fondations du château.",
+'../images/chapter/secret_passage.jpg'),
+
+(20, "L'Ossuaire",
+"Vous débouchez dans une vaste salle circulaire dont les murs sont tapissés de milliers de crânes humains. Le sol est jonché d'ossements qui craquent sous vos bottes. Au centre, une lueur verdâtre émane d'un puits sans fond. Soudain, les os s'assemblent ! Une horde de squelettes se dresse pour protéger le repos des morts.",
+'../images/chapter/ossuary_skeletons.jpg'),
+
+(21, "La Crypte du Roi Déchu",
+"Après avoir fracassé les gardiens d'os, vous pénétrez dans la chambre funéraire royale. Un sarcophage en obsidienne trône au centre. Devant lui, une silhouette encapuchonnée incante dans une langue oubliée. C'est le Nécromancien, le bras droit du Sorcier, qui tente de relever l'ancien Roi !",
+'../images/chapter/necromancer_crypt.jpg'),
+
+(22, "Le Trésor de la Lignée",
+"Le Nécromancien gît au sol, vaincu. Le sarcophage s'ouvre légèrement, non pas pour libérer un mort, mais pour révéler ce qu'il protégeait : l'Épée de l'Aube, une lame radiant d'une lumière sacrée, seule capable de percer les barrières magiques du Sorcier sans effort.",
+'../images/chapter/holy_sword.jpg'),
+
+(23, "L'Éboulement",
+"Le combat a fragilisé la structure de la crypte. Le plafond commence à s'effondrer ! D'énormes blocs de pierre tombent autour de vous. Il faut fuir immédiatement vers la surface ou finir enterré vivant avec les rois d'antan.",
+'../images/chapter/cave_in.jpg');
 
 INSERT INTO Links (id, chapter_id, next_chapter_id, description) VALUES
 (1,1,2,
@@ -451,19 +497,70 @@ INSERT INTO Links (id, chapter_id, next_chapter_id, description) VALUES
 "Oh non !!"
 );
 
+INSERT INTO Links (chapter_id, next_chapter_id, description) VALUES
+
+-- --- CONNEXION CHATEAU (Depuis Chapitre 9) ---
+(9, 12, "Pousser les portes et entrer dans le château."),
+
+-- --- NAVIGATION DU CHATEAU (Chapitres 12-18) ---
+(12, 13, "Descendre vers les sous-sols obscurs."),
+(12, 14, "Monter le grand escalier vers la galerie."),
+(13, 10, "L'armure vous écrase sous son poids..."),
+(13, 15, "L'armure est en pièces, continuer vers le laboratoire."),
+(13, 19, "Inspecter le mur du fond (Perception requise)."),
+(14, 15, "Le spectre est dissipé, avancer vers le laboratoire."),
+(14, 10, "Les éclats de verre ont eu raison de vous..."),
+(15, 16, "Ignorer les potions et monter vers la tour finale."),
+(15, 18, "Boire la potion rouge pour gagner des forces..."),
+(16, 17, "Porter le coup fatal au Sorcier !"),
+(16, 10, "La magie du Sorcier est trop puissante..."),
+(17, 1, "Retourner au village (Nouvelle partie)."),
+(18, 10, "Sombrer..."),
+
+-- Progression dans les catacombes
+(19, 20, "Descendre dans les profondeurs."),
+(20, 21, "Affronter la horde et avancer vers la Crypte."),
+(20, 23, "Fuir avant d'être submergé !"),
+(21, 22, "Le Nécromancien est mort, piller le sarcophage."),
+(21, 10, "Le sort de mort du Nécromancien vous atteint..."),
+
+-- Sorties des catacombes
+(22, 16, "Utiliser le téléporteur pour rejoindre la Tour du Sorcier."),
+(23, 10, "Trop lent ! Les pierres vous écrasent."),
+(23, 12, "Courir vers la sortie et rejoindre le Hall (Sans trésor).");
+
 /*MONSTER*/
 insert into Monster (id, name, pv, mana, initiative, strength, attack, xp) values
 (1, 'Sanglier enragé', 30, NULL, 15, 5, 'Charge furieuse', 20),
-(2, 'Loup noir', 25, NULL, 20, 7, 'Morsure rapide', 25);
+(2, 'Loup noir', 25, NULL, 20, 7, 'Morsure rapide', 25),
+(3,'Armure Maudite', 50, 0, 5, 20, 'Coup de taille', 50),
+(4,'Spectre du Miroir', 40, 50, 18, 10, 'Hurlement psychique', 60),
+(5,'Le Sorcier Noir', 80, 100, 12, 15, 'Éclair de néant', 500),
+(6,'Horde de Squelettes', 45, 0, 10, 8, "Pluie d\'os", 80),
+(7,'Le Nécromancien', 60, 80, 14, 10, 'Drain de vie', 150);
 
-insert into Encounter (id, chapter_id, monster_id) values
-(1,4,1),
-(2,6,2);
+INSERT INTO Encounter (chapter_id, monster_id) VALUES
+(4, 1),
+(6, 2),
+(13, 3), 
+(14, 4), 
+(16, 5), 
+(20, (SELECT id FROM Monster WHERE name = 'Horde de Squelettes')),
+(21, (SELECT id FROM Monster WHERE name = 'Le Nécromancien'));
 
 /*CLASS*/
 INSERT INTO `Class` (name,description,base_pv,base_mana,strength,initiative,max_items) VALUES
 ('Guerrier','Combat rapproché, très résistant',150,0,18,6,12),
 ('Voleur','Agile et rapide, forte initiative',100,10,12,14,10),
 ('Magicien','Spécialiste de la magie offensive',80,30,8,10,8);
+
+-- Ajout de l'objet légendaire
+INSERT INTO Items (name, description, item_type, category) VALUES
+('Épée de l''Aube', 'Une lame sacrée qui brille dans les ténèbres. Efficace contre les sorciers.', 'Arme', 'Légendaire');
+
+-- On lie l'objet au trésor (Chapitre 22 donne l'item ID correspondant)
+-- Note : Il faudra vérifier l'ID de l'item généré, supposons ici que c'est le dernier ID créé.
+INSERT INTO Chapter_Treasure (chapter_id, item_id, quantity) 
+VALUES (22, (SELECT MAX(id) FROM Items), 1);
 
 COMMIT;

@@ -18,7 +18,7 @@ class ChapterController
             $rows = $chapterRows->fetchAll(PDO::FETCH_ASSOC);
 
             // 2. Récupération des liens
-            $stmtLinks = $bdd->query("SELECT chapter_id, next_chapter_id, description FROM Links ORDER BY chapter_id, next_chapter_id");
+            $stmtLinks = $bdd->query("SELECT chapter_id, next_chapter_id, description FROM Links ORDER BY id ASC");
             $linkRows = $stmtLinks->fetchAll(PDO::FETCH_ASSOC);
 
             // 3. Organisation des liens

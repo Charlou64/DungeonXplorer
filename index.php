@@ -1,4 +1,6 @@
 <?php
+ob_start();
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -76,7 +78,7 @@ class Router
 }
 
 // Instantiation du routeur - using a more robust approach
-$basePath = '/dungeonXplorer/DungeonXplorer'; 
+$basePath = '/DungeonXplorer'; 
 $currentUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $cleanUri = str_replace($basePath, '', $currentUri);
 
@@ -92,10 +94,25 @@ $router->addRoute('account', 'AccountController@index');
 $router->addRoute('account/signIn', 'AccountController@signIn');
 $router->addRoute('account/signUp', 'AccountController@signUp');
 $router->addRoute('account/logout', 'AccountController@logout');
+$router->addRoute('account/deleteAccount', 'AccountController@deleteAccount');
 
 $router->addRoute('character', 'CharacterController@index');
 $router->addRoute('character/create', 'CharacterController@create');
 $router->addRoute('character/{id}', 'CharacterController@show');
+
+$router->addRoute('admin', 'AdminController@index');
+$router->addRoute('admin/chapters', 'AdminController@chapters');
+$router->addRoute('admin/monsters', 'AdminController@monsters');
+$router->addRoute('admin/users', 'AdminController@users');
+$router->addRoute('admin/users/create', 'AdminController@createUser');
+$router->addRoute('admin/users/toggle/{id}', 'AdminController@toggleAdmin');
+$router->addRoute('admin/users/delete/{id}', 'AdminController@deleteUser');
+$router->addRoute('admin/createChapter', 'AdminController@createChapter');
+$router->addRoute('admin/deleteChapter/{id}', 'AdminController@deleteChapter');
+$router->addRoute('admin/addLink', 'AdminController@addLink');
+$router->addRoute('admin/createMonster', 'AdminController@createMonster');
+$router->addRoute('admin/linkMonster', 'AdminController@linkMonster');
+
 
 // debug purposes
 /*

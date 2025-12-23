@@ -17,7 +17,6 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-container ">
-        <!--<img src="images/logo.png" class="logo_dungeon" alt="DungeonXplorer logo" id="logo" onclick="document.location.reload(false)">-->
             <a class="navbar-brand" href="<?php echo $_SESSION["basepath"]; ?>">
                 <h3 class="mb-0">DungeonXplorer</h3>
             </a>
@@ -29,10 +28,15 @@
                     <li class="nav-item"><a class="nav-link active" href="<?php echo $_SESSION["basepath"]; ?>">Accueil</a></li>
                     <?php
                         if(isset($_SESSION["username"])){
+                            // LIEN ADMIN : Affiché uniquement si l'utilisateur est admin
+                            if(isset($_SESSION["is_admin"]) && $_SESSION["is_admin"] == 1) {
+                                echo '<li class="nav-item"><a class="nav-link fw-bold text-danger" href="'.$_SESSION["basepath"].'/admin">Administration</a></li>';
+                            }
+                            
                             echo '<li class="nav-item"><a class="nav-link" href="'.$_SESSION["basepath"].'/character">Personnages</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="'.$_SESSION["basepath"].'/account">Compte</a></li>';
                         }
-                        else{
+                        else {
                             echo '<li class="nav-item"><a class="nav-link" href="'.$_SESSION["basepath"].'/account/signIn">Connexion</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="'.$_SESSION["basepath"].'/account/signUp">S\'incrire</a></li>';
                         }

@@ -32,6 +32,7 @@ CREATE TABLE `Users` (
   `password_hash` VARCHAR(255) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `is_admin` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -553,6 +554,7 @@ INSERT INTO `Class` (name,description,base_pv,base_mana,strength,initiative,max_
 ('Voleur','Agile et rapide, forte initiative',100,10,12,14,10),
 ('Magicien','Spécialiste de la magie offensive',80,30,8,10,8);
 
+
 -- Ajout de l'objet légendaire
 INSERT INTO Items (name, description, item_type, category) VALUES
 ('Épée de l''Aube', 'Une lame sacrée qui brille dans les ténèbres. Efficace contre les sorciers.', 'Arme', 'Légendaire');
@@ -561,5 +563,11 @@ INSERT INTO Items (name, description, item_type, category) VALUES
 -- Note : Il faudra vérifier l'ID de l'item généré, supposons ici que c'est le dernier ID créé.
 INSERT INTO Chapter_Treasure (chapter_id, item_id, quantity) 
 VALUES (22, (SELECT MAX(id) FROM Items), 1);
+
+
+/*ADMIN*/
+insert into Users (username, password_hash, email, is_admin) VALUES
+('admin', '$2y$10$yd2D74zxUAGiIdXH2m3yFu7VNyuLSXnELHcXfJiQrzKon6BK8fjJq', 'admin@gmail.com', 1); -- password: admin
+
 
 COMMIT;

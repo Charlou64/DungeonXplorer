@@ -4,7 +4,7 @@ class AccountController {
         global $bdd;
         if (isset($_SESSION["username"])) {
             // Récupération des infos utilisateur
-            $stmt = $bdd->prepare("SELECT username, email, created_at FROM Users WHERE username = :username");
+            $stmt = $bdd->prepare("SELECT username, email, created_at, is_admin FROM Users WHERE username = :username");
             $stmt->execute([':username' => $_SESSION["username"]]);
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
             require_once 'views/account/account.php';
@@ -37,6 +37,7 @@ class AccountController {
                 // Vérification du mot de passe
                 if (password_verify($password, $user['password_hash'])) {
                     $_SESSION["username"] = $user["username"];
+                    $_SESSION["is_admin"] = $user["is_admin"];
                     header('Location: ' . $_SESSION["basepath"] . '/account');
                     exit;
                 } else {
@@ -76,6 +77,7 @@ class AccountController {
 
                 if ($stmt->execute()) {
                     $_SESSION["username"] = $username;
+                    $_SESSION["is_admin"] = $user["is_admin"];
                     header('Location: ' . $_SESSION["basepath"] . '/account');
                     exit;
                 }
@@ -83,5 +85,50 @@ class AccountController {
         }
 
         require_once 'views/account/signUp.php';
+    }
+
+    public function deleteAccount() {
+        global $bdd;
+        if (isset($_SESSION["username"])) {
+            $username = $_SESSION["username"];
+
+            // 1. Récupérer l'ID de l'utilisateur et son Héros
+            $stmt = $bdd->prepare("SELECT u.id as user_id, h.id as hero_id FROM Users u 
+                                   LEFT JOIN Hero h ON u.id = h.compte_id 
+                                   WHERE u.username = :username");
+            $stmt->execute([':username' => $username]);
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($data) {
+                $userId = $data['user_id'];
+                $heroId = $data['hero_id'];
+
+                // Si l'utilisateur a un héros, on nettoie d'abord tout ce qui est lié au héros
+                if ($heroId) {
+                    // Supprimer l'inventaire
+                    $bdd->prepare("DELETE FROM Inventory WHERE hero_id = ?")->execute([$heroId]);
+                    // Supprimer la progression
+                    $bdd->prepare("DELETE FROM Hero_Progress WHERE hero_id = ?")->execute([$heroId]);
+                    // Supprimer les sorts appris
+                    $bdd->prepare("DELETE FROM Hero_Spells WHERE hero_id = ?")->execute([$heroId]);
+                    // Supprimer l'historique d'XP
+                    $bdd->prepare("DELETE FROM Hero_XP_History WHERE hero_id = ?")->execute([$heroId]);
+                    // Supprimer les quêtes
+                    $bdd->prepare("DELETE FROM Quests WHERE hero_id = ?")->execute([$heroId]);
+                    // Enfin, supprimer le héros
+                    $bdd->prepare("DELETE FROM Hero WHERE id = ?")->execute([$heroId]);
+                }
+
+                // 2. Supprimer l'utilisateur
+                $stmtDeleteUser = $bdd->prepare("DELETE FROM Users WHERE id = ?");
+                $stmtDeleteUser->execute([$userId]);
+
+                // 3. Nettoyage session et redirection
+                unset($_SESSION['username']);
+                unset($_SESSION['is_admin']);
+                header('Location: ' . $_SESSION["basepath"]);
+                exit;
+            }
+        }
     }
 }
